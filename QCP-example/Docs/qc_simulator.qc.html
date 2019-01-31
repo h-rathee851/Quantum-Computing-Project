@@ -1,0 +1,728 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module qc_simulator.qc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="qc_simulator.html"><font color="#ffffff">qc_simulator</font></a>.qc</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Candy%5Conedrive%5Cdocuments%5Cuniversity%5Cyear%203%5Cquantum%20computing%20project%5Cquantumcomputingproject%5Cqc_simulator%5Cqc.py">c:\users\andy\onedrive\documents\university\year 3\quantum computing project\quantumcomputingproject\qc_simulator\qc.py</a></font></td></tr></table>
+    <p><tt>University&nbsp;of&nbsp;Edinbugh,&nbsp;School&nbsp;of&nbsp;Physics&nbsp;and&nbsp;Astronomy<br>
+Quantum&nbsp;Computing&nbsp;Project<br>
+&nbsp;<br>
+Quantum&nbsp;Computer&nbsp;Simulator:&nbsp;Implementations&nbsp;of&nbsp;quantum&nbsp;register&nbsp;and&nbsp;quantum<br>
+logic&nbsp;gate.<br>
+&nbsp;<br>
+Authors:&nbsp;Andreas&nbsp;Malekos,&nbsp;Gabriel&nbsp;Hoogervorst,&nbsp;Lewis&nbsp;Lappin,&nbsp;John&nbsp;Harbottle,<br>
+Wesley&nbsp;Shao&nbsp;Zhonghua,&nbsp;Huw&nbsp;Haigh</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="qc_simulator.qc_interface.html#IOperator">qc_simulator.qc_interface.IOperator</a>(<a href="abc.html#ABC">abc.ABC</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="qc_simulator.qc.html#Operator">Operator</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="qc_simulator.qc.html#CUGate">CUGate</a>
+</font></dt><dt><font face="helvetica, arial"><a href="qc_simulator.qc.html#Hadamard">Hadamard</a>
+</font></dt><dt><font face="helvetica, arial"><a href="qc_simulator.qc.html#IdentityGate">IdentityGate</a>
+</font></dt><dt><font face="helvetica, arial"><a href="qc_simulator.qc.html#Not">Not</a>
+</font></dt><dt><font face="helvetica, arial"><a href="qc_simulator.qc.html#PhaseShift">PhaseShift</a>
+</font></dt><dt><font face="helvetica, arial"><a href="qc_simulator.qc.html#SWAPGate">SWAPGate</a>
+</font></dt><dt><font face="helvetica, arial"><a href="qc_simulator.qc.html#fGate">fGate</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="qc_simulator.qc_interface.html#IQuantumRegister">qc_simulator.qc_interface.IQuantumRegister</a>(<a href="abc.html#ABC">abc.ABC</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="qc_simulator.qc.html#QuantumRegister">QuantumRegister</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CUGate">class <strong>CUGate</strong></a>(<a href="qc_simulator.qc.html#Operator">Operator</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;implements&nbsp;a&nbsp;controlled&nbsp;U&nbsp;gate.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc.html#CUGate">CUGate</a></dd>
+<dd><a href="qc_simulator.qc.html#Operator">Operator</a></dd>
+<dd><a href="qc_simulator.qc_interface.html#IOperator">qc_simulator.qc_interface.IOperator</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="CUGate-__init__"><strong>__init__</strong></a>(self, base, n_control=1, empty_qw=0)</dt><dd><tt>Class&nbsp;constructor.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;base&nbsp;<a href="#Operator">Operator</a>&nbsp;U<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n_control:&nbsp;&lt;int&gt;&nbsp;number&nbsp;of&nbsp;control&nbsp;qubits<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty_qw:&nbsp;&lt;int&gt;\&nbsp;&lt;list&gt;:&nbsp;Number&nbsp;of&nbsp;empty&nbsp;lines&nbsp;between&nbsp;control<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qubits&nbsp;and&nbsp;target&nbsp;qubits.<br>
+If&nbsp;there&nbsp;are&nbsp;no&nbsp;empty&nbsp;lines,&nbsp;leave&nbsp;equal&nbsp;to&nbsp;0.&nbsp;If&nbsp;there&nbsp;are,&nbsp;empty_qw<br>
+must&nbsp;be&nbsp;a&nbsp;list&nbsp;with&nbsp;n_control-1&nbsp;elements,&nbsp;each&nbsp;indicating&nbsp;the&nbsp;number&nbsp;of<br>
+empty&nbsp;lines&nbsp;between&nbsp;control-control&nbsp;and&nbsp;finally&nbsp;control-target&nbsp;eg&nbsp;[1,0,1]</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="qc_simulator.qc.html#Operator">Operator</a>:<br>
+<dl><dt><a name="CUGate-__mod__"><strong>__mod__</strong></a>(self, other)</dt><dd><tt>Overrides&nbsp;"%"&nbsp;operator&nbsp;to&nbsp;define&nbsp;tensor&nbsp;product&nbsp;between&nbsp;two&nbsp;operators.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Result&nbsp;of&nbsp;tensor&nbsp;product</tt></dd></dl>
+
+<dl><dt><a name="CUGate-__mul__"><strong>__mul__</strong></a>(self, rhs)</dt><dd><tt>Overrides&nbsp;multiplication&nbsp;operator&nbsp;and&nbsp;defined&nbsp;the&nbsp;multiplication&nbsp;between<br>
+two&nbsp;operators&nbsp;and&nbsp;an&nbsp;operator&nbsp;and&nbsp;a&nbsp;quantum&nbsp;register.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhs:&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side,&nbsp;can&nbsp;be&nbsp;either<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operator&nbsp;or&nbsp;quantum&nbsp;register<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;if&nbsp;rhs&nbsp;is&nbsp;of&nbsp;type&nbsp;<a href="#Operator">Operator</a>&nbsp;then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#Operator">Operator</a>.&nbsp;If&nbsp;it's&nbsp;of&nbsp;type&nbsp;<a href="#QuantumRegister">QuantumRegister</a>,&nbsp;then&nbsp;return&nbsp;a&nbsp;quantum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;object.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhs&nbsp;is&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;its&nbsp;number&nbsp;of&nbsp;qubits<br>
+do&nbsp;not&nbsp;correspond&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;qubits&nbsp;of&nbsp;the&nbsp;<a href="#Operator">Operator</a>.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhis&nbsp;is&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;of&nbsp;the&nbsp;same&nbsp;size.<br>
+&nbsp;<br>
+User&nbsp;needs&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;rhs&nbsp;is&nbsp;of&nbsp;the&nbsp;right&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="CUGate-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Provides&nbsp;method&nbsp;to&nbsp;pring&nbsp;out&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep:&nbsp;&lt;String&gt;&nbsp;String&nbsp;that&nbsp;corresponds&nbsp;the&nbsp;<a href="#CUGate-__str__">__str__</a>()&nbsp;method&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="CUGate-dag"><strong>dag</strong></a>(self)</dt><dd><tt>Computes&nbsp;hermitian&nbsp;transpose&nbsp;of&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;herm_transpse:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Hermitian&nbsp;transpose&nbsp;of&nbsp;operator</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Hadamard">class <strong>Hadamard</strong></a>(<a href="qc_simulator.qc.html#Operator">Operator</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;defines&nbsp;hadamard&nbsp;gate.&nbsp;This&nbsp;class&nbsp;extends&nbsp;the&nbsp;<a href="#Operator">Operator</a>&nbsp;class.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc.html#Hadamard">Hadamard</a></dd>
+<dd><a href="qc_simulator.qc.html#Operator">Operator</a></dd>
+<dd><a href="qc_simulator.qc_interface.html#IOperator">qc_simulator.qc_interface.IOperator</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Hadamard-__init__"><strong>__init__</strong></a>(self, n_qubits:int=1)</dt><dd><tt>&nbsp;Class&nbsp;constructor<br>
+&nbsp;Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n_qubits:&nbsp;&lt;int&gt;&nbsp;Number&nbsp;of&nbsp;qubits&nbsp;operator&nbsp;operates&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base:&nbsp;&lt;np.array&gt;&nbsp;Base&nbsp;matrix<br>
+&nbsp;<br>
+Raises&nbsp;error&nbsp;if&nbsp;n_qubits&nbsp;is&nbsp;less&nbsp;than&nbsp;or&nbsp;equal&nbsp;to&nbsp;0.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;n_qubits&nbsp;is&nbsp;&lt;int&gt;.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;the&nbsp;size&nbsp;of&nbsp;base&nbsp;is&nbsp;consistant,&nbsp;i.e.&nbsp;a&nbsp;2&nbsp;by&nbsp;2<br>
+numpy&nbsp;array.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="qc_simulator.qc.html#Operator">Operator</a>:<br>
+<dl><dt><a name="Hadamard-__mod__"><strong>__mod__</strong></a>(self, other)</dt><dd><tt>Overrides&nbsp;"%"&nbsp;operator&nbsp;to&nbsp;define&nbsp;tensor&nbsp;product&nbsp;between&nbsp;two&nbsp;operators.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Result&nbsp;of&nbsp;tensor&nbsp;product</tt></dd></dl>
+
+<dl><dt><a name="Hadamard-__mul__"><strong>__mul__</strong></a>(self, rhs)</dt><dd><tt>Overrides&nbsp;multiplication&nbsp;operator&nbsp;and&nbsp;defined&nbsp;the&nbsp;multiplication&nbsp;between<br>
+two&nbsp;operators&nbsp;and&nbsp;an&nbsp;operator&nbsp;and&nbsp;a&nbsp;quantum&nbsp;register.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhs:&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side,&nbsp;can&nbsp;be&nbsp;either<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operator&nbsp;or&nbsp;quantum&nbsp;register<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;if&nbsp;rhs&nbsp;is&nbsp;of&nbsp;type&nbsp;<a href="#Operator">Operator</a>&nbsp;then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#Operator">Operator</a>.&nbsp;If&nbsp;it's&nbsp;of&nbsp;type&nbsp;<a href="#QuantumRegister">QuantumRegister</a>,&nbsp;then&nbsp;return&nbsp;a&nbsp;quantum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;object.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhs&nbsp;is&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;its&nbsp;number&nbsp;of&nbsp;qubits<br>
+do&nbsp;not&nbsp;correspond&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;qubits&nbsp;of&nbsp;the&nbsp;<a href="#Operator">Operator</a>.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhis&nbsp;is&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;of&nbsp;the&nbsp;same&nbsp;size.<br>
+&nbsp;<br>
+User&nbsp;needs&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;rhs&nbsp;is&nbsp;of&nbsp;the&nbsp;right&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="Hadamard-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Provides&nbsp;method&nbsp;to&nbsp;pring&nbsp;out&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep:&nbsp;&lt;String&gt;&nbsp;String&nbsp;that&nbsp;corresponds&nbsp;the&nbsp;<a href="#Hadamard-__str__">__str__</a>()&nbsp;method&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="Hadamard-dag"><strong>dag</strong></a>(self)</dt><dd><tt>Computes&nbsp;hermitian&nbsp;transpose&nbsp;of&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;herm_transpse:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Hermitian&nbsp;transpose&nbsp;of&nbsp;operator</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IdentityGate">class <strong>IdentityGate</strong></a>(<a href="qc_simulator.qc.html#Operator">Operator</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;implements&nbsp;identity&nbsp;operator.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc.html#IdentityGate">IdentityGate</a></dd>
+<dd><a href="qc_simulator.qc.html#Operator">Operator</a></dd>
+<dd><a href="qc_simulator.qc_interface.html#IOperator">qc_simulator.qc_interface.IOperator</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="IdentityGate-__init__"><strong>__init__</strong></a>(self, n_qubits=1)</dt><dd><tt>&nbsp;Class&nbsp;constructor<br>
+&nbsp;Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n_qubits:&nbsp;&lt;int&gt;&nbsp;Number&nbsp;of&nbsp;qubits&nbsp;operator&nbsp;operates&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base:&nbsp;&lt;np.array&gt;&nbsp;Base&nbsp;matrix<br>
+&nbsp;<br>
+Raises&nbsp;error&nbsp;if&nbsp;n_qubits&nbsp;is&nbsp;less&nbsp;than&nbsp;or&nbsp;equal&nbsp;to&nbsp;0.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;n_qubits&nbsp;is&nbsp;&lt;int&gt;.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;the&nbsp;size&nbsp;of&nbsp;base&nbsp;is&nbsp;consistant,&nbsp;i.e.&nbsp;a&nbsp;2&nbsp;by&nbsp;2<br>
+numpy&nbsp;array.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="qc_simulator.qc.html#Operator">Operator</a>:<br>
+<dl><dt><a name="IdentityGate-__mod__"><strong>__mod__</strong></a>(self, other)</dt><dd><tt>Overrides&nbsp;"%"&nbsp;operator&nbsp;to&nbsp;define&nbsp;tensor&nbsp;product&nbsp;between&nbsp;two&nbsp;operators.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Result&nbsp;of&nbsp;tensor&nbsp;product</tt></dd></dl>
+
+<dl><dt><a name="IdentityGate-__mul__"><strong>__mul__</strong></a>(self, rhs)</dt><dd><tt>Overrides&nbsp;multiplication&nbsp;operator&nbsp;and&nbsp;defined&nbsp;the&nbsp;multiplication&nbsp;between<br>
+two&nbsp;operators&nbsp;and&nbsp;an&nbsp;operator&nbsp;and&nbsp;a&nbsp;quantum&nbsp;register.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhs:&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side,&nbsp;can&nbsp;be&nbsp;either<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operator&nbsp;or&nbsp;quantum&nbsp;register<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;if&nbsp;rhs&nbsp;is&nbsp;of&nbsp;type&nbsp;<a href="#Operator">Operator</a>&nbsp;then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#Operator">Operator</a>.&nbsp;If&nbsp;it's&nbsp;of&nbsp;type&nbsp;<a href="#QuantumRegister">QuantumRegister</a>,&nbsp;then&nbsp;return&nbsp;a&nbsp;quantum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;object.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhs&nbsp;is&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;its&nbsp;number&nbsp;of&nbsp;qubits<br>
+do&nbsp;not&nbsp;correspond&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;qubits&nbsp;of&nbsp;the&nbsp;<a href="#Operator">Operator</a>.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhis&nbsp;is&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;of&nbsp;the&nbsp;same&nbsp;size.<br>
+&nbsp;<br>
+User&nbsp;needs&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;rhs&nbsp;is&nbsp;of&nbsp;the&nbsp;right&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="IdentityGate-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Provides&nbsp;method&nbsp;to&nbsp;pring&nbsp;out&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep:&nbsp;&lt;String&gt;&nbsp;String&nbsp;that&nbsp;corresponds&nbsp;the&nbsp;<a href="#IdentityGate-__str__">__str__</a>()&nbsp;method&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="IdentityGate-dag"><strong>dag</strong></a>(self)</dt><dd><tt>Computes&nbsp;hermitian&nbsp;transpose&nbsp;of&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;herm_transpse:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Hermitian&nbsp;transpose&nbsp;of&nbsp;operator</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Not">class <strong>Not</strong></a>(<a href="qc_simulator.qc.html#Operator">Operator</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;implements&nbsp;not&nbsp;gate.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc.html#Not">Not</a></dd>
+<dd><a href="qc_simulator.qc.html#Operator">Operator</a></dd>
+<dd><a href="qc_simulator.qc_interface.html#IOperator">qc_simulator.qc_interface.IOperator</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Not-__init__"><strong>__init__</strong></a>(self, n_qubits=1)</dt><dd><tt>&nbsp;Class&nbsp;constructor<br>
+&nbsp;Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n_qubits:&nbsp;&lt;int&gt;&nbsp;Number&nbsp;of&nbsp;qubits&nbsp;operator&nbsp;operates&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base:&nbsp;&lt;np.array&gt;&nbsp;Base&nbsp;matrix<br>
+&nbsp;<br>
+Raises&nbsp;error&nbsp;if&nbsp;n_qubits&nbsp;is&nbsp;less&nbsp;than&nbsp;or&nbsp;equal&nbsp;to&nbsp;0.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;n_qubits&nbsp;is&nbsp;&lt;int&gt;.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;the&nbsp;size&nbsp;of&nbsp;base&nbsp;is&nbsp;consistant,&nbsp;i.e.&nbsp;a&nbsp;2&nbsp;by&nbsp;2<br>
+numpy&nbsp;array.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="qc_simulator.qc.html#Operator">Operator</a>:<br>
+<dl><dt><a name="Not-__mod__"><strong>__mod__</strong></a>(self, other)</dt><dd><tt>Overrides&nbsp;"%"&nbsp;operator&nbsp;to&nbsp;define&nbsp;tensor&nbsp;product&nbsp;between&nbsp;two&nbsp;operators.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Result&nbsp;of&nbsp;tensor&nbsp;product</tt></dd></dl>
+
+<dl><dt><a name="Not-__mul__"><strong>__mul__</strong></a>(self, rhs)</dt><dd><tt>Overrides&nbsp;multiplication&nbsp;operator&nbsp;and&nbsp;defined&nbsp;the&nbsp;multiplication&nbsp;between<br>
+two&nbsp;operators&nbsp;and&nbsp;an&nbsp;operator&nbsp;and&nbsp;a&nbsp;quantum&nbsp;register.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhs:&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side,&nbsp;can&nbsp;be&nbsp;either<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operator&nbsp;or&nbsp;quantum&nbsp;register<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;if&nbsp;rhs&nbsp;is&nbsp;of&nbsp;type&nbsp;<a href="#Operator">Operator</a>&nbsp;then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#Operator">Operator</a>.&nbsp;If&nbsp;it's&nbsp;of&nbsp;type&nbsp;<a href="#QuantumRegister">QuantumRegister</a>,&nbsp;then&nbsp;return&nbsp;a&nbsp;quantum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;object.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhs&nbsp;is&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;its&nbsp;number&nbsp;of&nbsp;qubits<br>
+do&nbsp;not&nbsp;correspond&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;qubits&nbsp;of&nbsp;the&nbsp;<a href="#Operator">Operator</a>.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhis&nbsp;is&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;of&nbsp;the&nbsp;same&nbsp;size.<br>
+&nbsp;<br>
+User&nbsp;needs&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;rhs&nbsp;is&nbsp;of&nbsp;the&nbsp;right&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="Not-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Provides&nbsp;method&nbsp;to&nbsp;pring&nbsp;out&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep:&nbsp;&lt;String&gt;&nbsp;String&nbsp;that&nbsp;corresponds&nbsp;the&nbsp;<a href="#Not-__str__">__str__</a>()&nbsp;method&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="Not-dag"><strong>dag</strong></a>(self)</dt><dd><tt>Computes&nbsp;hermitian&nbsp;transpose&nbsp;of&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;herm_transpse:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Hermitian&nbsp;transpose&nbsp;of&nbsp;operator</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Operator">class <strong>Operator</strong></a>(<a href="qc_simulator.qc_interface.html#IOperator">qc_simulator.qc_interface.IOperator</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;defines&nbsp;a&nbsp;quantum&nbsp;mechanical&nbsp;operator.&nbsp;Implments&nbsp;abstract&nbsp;class<br>
+OperatorAbstract.&nbsp;The&nbsp;operator&nbsp;is&nbsp;stored&nbsp;as&nbsp;a&nbsp;square&nbsp;sparse&nbsp;matrix.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc.html#Operator">Operator</a></dd>
+<dd><a href="qc_simulator.qc_interface.html#IOperator">qc_simulator.qc_interface.IOperator</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Operator-__init__"><strong>__init__</strong></a>(self, n_qubits:int=1, base=array([[0., 0.],
+       [0., 0.]]))</dt><dd><tt>&nbsp;Class&nbsp;constructor<br>
+&nbsp;Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n_qubits:&nbsp;&lt;int&gt;&nbsp;Number&nbsp;of&nbsp;qubits&nbsp;operator&nbsp;operates&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base:&nbsp;&lt;np.array&gt;&nbsp;Base&nbsp;matrix<br>
+&nbsp;<br>
+Raises&nbsp;error&nbsp;if&nbsp;n_qubits&nbsp;is&nbsp;less&nbsp;than&nbsp;or&nbsp;equal&nbsp;to&nbsp;0.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;n_qubits&nbsp;is&nbsp;&lt;int&gt;.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;the&nbsp;size&nbsp;of&nbsp;base&nbsp;is&nbsp;consistant,&nbsp;i.e.&nbsp;a&nbsp;2&nbsp;by&nbsp;2<br>
+numpy&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="Operator-__mod__"><strong>__mod__</strong></a>(self, other)</dt><dd><tt>Overrides&nbsp;"%"&nbsp;operator&nbsp;to&nbsp;define&nbsp;tensor&nbsp;product&nbsp;between&nbsp;two&nbsp;operators.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Result&nbsp;of&nbsp;tensor&nbsp;product</tt></dd></dl>
+
+<dl><dt><a name="Operator-__mul__"><strong>__mul__</strong></a>(self, rhs)</dt><dd><tt>Overrides&nbsp;multiplication&nbsp;operator&nbsp;and&nbsp;defined&nbsp;the&nbsp;multiplication&nbsp;between<br>
+two&nbsp;operators&nbsp;and&nbsp;an&nbsp;operator&nbsp;and&nbsp;a&nbsp;quantum&nbsp;register.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhs:&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side,&nbsp;can&nbsp;be&nbsp;either<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operator&nbsp;or&nbsp;quantum&nbsp;register<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;if&nbsp;rhs&nbsp;is&nbsp;of&nbsp;type&nbsp;<a href="#Operator">Operator</a>&nbsp;then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#Operator">Operator</a>.&nbsp;If&nbsp;it's&nbsp;of&nbsp;type&nbsp;<a href="#QuantumRegister">QuantumRegister</a>,&nbsp;then&nbsp;return&nbsp;a&nbsp;quantum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;object.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhs&nbsp;is&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;its&nbsp;number&nbsp;of&nbsp;qubits<br>
+do&nbsp;not&nbsp;correspond&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;qubits&nbsp;of&nbsp;the&nbsp;<a href="#Operator">Operator</a>.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhis&nbsp;is&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;of&nbsp;the&nbsp;same&nbsp;size.<br>
+&nbsp;<br>
+User&nbsp;needs&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;rhs&nbsp;is&nbsp;of&nbsp;the&nbsp;right&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="Operator-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Provides&nbsp;method&nbsp;to&nbsp;pring&nbsp;out&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep:&nbsp;&lt;String&gt;&nbsp;String&nbsp;that&nbsp;corresponds&nbsp;the&nbsp;<a href="#Operator-__str__">__str__</a>()&nbsp;method&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="Operator-dag"><strong>dag</strong></a>(self)</dt><dd><tt>Computes&nbsp;hermitian&nbsp;transpose&nbsp;of&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;herm_transpse:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Hermitian&nbsp;transpose&nbsp;of&nbsp;operator</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PhaseShift">class <strong>PhaseShift</strong></a>(<a href="qc_simulator.qc.html#Operator">Operator</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;implements&nbsp;phase&nbsp;shift&nbsp;gate<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc.html#PhaseShift">PhaseShift</a></dd>
+<dd><a href="qc_simulator.qc.html#Operator">Operator</a></dd>
+<dd><a href="qc_simulator.qc_interface.html#IOperator">qc_simulator.qc_interface.IOperator</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PhaseShift-__init__"><strong>__init__</strong></a>(self, phi, n_qubits:int=1)</dt><dd><tt>Class&nbsp;constructor.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;phi:&nbsp;&lt;float&gt;&nbsp;angle&nbsp;in&nbsp;radians<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n_qubits:&nbsp;&lt;int&gt;&nbsp;number&nbsp;of&nbsp;qubits</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="qc_simulator.qc.html#Operator">Operator</a>:<br>
+<dl><dt><a name="PhaseShift-__mod__"><strong>__mod__</strong></a>(self, other)</dt><dd><tt>Overrides&nbsp;"%"&nbsp;operator&nbsp;to&nbsp;define&nbsp;tensor&nbsp;product&nbsp;between&nbsp;two&nbsp;operators.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Result&nbsp;of&nbsp;tensor&nbsp;product</tt></dd></dl>
+
+<dl><dt><a name="PhaseShift-__mul__"><strong>__mul__</strong></a>(self, rhs)</dt><dd><tt>Overrides&nbsp;multiplication&nbsp;operator&nbsp;and&nbsp;defined&nbsp;the&nbsp;multiplication&nbsp;between<br>
+two&nbsp;operators&nbsp;and&nbsp;an&nbsp;operator&nbsp;and&nbsp;a&nbsp;quantum&nbsp;register.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhs:&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side,&nbsp;can&nbsp;be&nbsp;either<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operator&nbsp;or&nbsp;quantum&nbsp;register<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;if&nbsp;rhs&nbsp;is&nbsp;of&nbsp;type&nbsp;<a href="#Operator">Operator</a>&nbsp;then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#Operator">Operator</a>.&nbsp;If&nbsp;it's&nbsp;of&nbsp;type&nbsp;<a href="#QuantumRegister">QuantumRegister</a>,&nbsp;then&nbsp;return&nbsp;a&nbsp;quantum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;object.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhs&nbsp;is&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;its&nbsp;number&nbsp;of&nbsp;qubits<br>
+do&nbsp;not&nbsp;correspond&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;qubits&nbsp;of&nbsp;the&nbsp;<a href="#Operator">Operator</a>.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhis&nbsp;is&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;of&nbsp;the&nbsp;same&nbsp;size.<br>
+&nbsp;<br>
+User&nbsp;needs&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;rhs&nbsp;is&nbsp;of&nbsp;the&nbsp;right&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="PhaseShift-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Provides&nbsp;method&nbsp;to&nbsp;pring&nbsp;out&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep:&nbsp;&lt;String&gt;&nbsp;String&nbsp;that&nbsp;corresponds&nbsp;the&nbsp;<a href="#PhaseShift-__str__">__str__</a>()&nbsp;method&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="PhaseShift-dag"><strong>dag</strong></a>(self)</dt><dd><tt>Computes&nbsp;hermitian&nbsp;transpose&nbsp;of&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;herm_transpse:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Hermitian&nbsp;transpose&nbsp;of&nbsp;operator</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="QuantumRegister">class <strong>QuantumRegister</strong></a>(<a href="qc_simulator.qc_interface.html#IQuantumRegister">qc_simulator.qc_interface.IQuantumRegister</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Quantum&nbsp;register&nbsp;class.&nbsp;The&nbsp;quantum&nbsp;register&nbsp;is&nbsp;saved&nbsp;as&nbsp;a&nbsp;complex<br>
+numpy&nbsp;array.&nbsp;Each&nbsp;element&nbsp;of&nbsp;the&nbsp;array&nbsp;is&nbsp;the&nbsp;amplitude&nbsp;of&nbsp;the<br>
+corresponding&nbsp;state,&nbsp;eg.&nbsp;the&nbsp;first&nbsp;element&nbsp;is&nbsp;the&nbsp;first&nbsp;state,&nbsp;the&nbsp;second<br>
+element&nbsp;is&nbsp;the&nbsp;second&nbsp;state.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc.html#QuantumRegister">QuantumRegister</a></dd>
+<dd><a href="qc_simulator.qc_interface.html#IQuantumRegister">qc_simulator.qc_interface.IQuantumRegister</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="QuantumRegister-__init__"><strong>__init__</strong></a>(self, n_qubits:int=1, base_states=None)</dt><dd><tt>Class&nbsp;constructor<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n_qubits:&nbsp;&lt;int&gt;&nbsp;number&nbsp;of&nbsp;qubits&nbsp;in&nbsp;quantum&nbsp;register<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isempty:&nbsp;&lt;bool&gt;&nbsp;parameter&nbsp;that&nbsp;tells&nbsp;whether&nbsp;the&nbsp;quantum&nbsp;register&nbsp;should&nbsp;be&nbsp;empty.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set&nbsp;to&nbsp;False&nbsp;by&nbsp;default.</tt></dd></dl>
+
+<dl><dt><a name="QuantumRegister-__mul__"><strong>__mul__</strong></a>(self, other)</dt><dd><tt>Overrides&nbsp;multiplication&nbsp;operator&nbsp;to&nbsp;define&nbsp;tensor&nbsp;product&nbsp;between&nbsp;two&nbsp;quantum&nbsp;registers.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other:&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;right&nbsp;hand&nbsp;side&nbsp;quantum&nbsp;register<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qmr_result:&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;resulting&nbsp;quantum&nbsp;register.<br>
+&nbsp;<br>
+Raises&nbsp;error&nbsp;if&nbsp;'other'&nbsp;is&nbsp;not&nbsp;of&nbsp;the&nbsp;right&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="QuantumRegister-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Overrides&nbsp;str&nbsp;method&nbsp;to&nbsp;print&nbsp;out&nbsp;quantum&nbsp;register&nbsp;in&nbsp;braket&nbsp;notation<br>
+Outpiuts:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep&nbsp;:&nbsp;&lt;str&gt;&nbsp;reply</tt></dd></dl>
+
+<dl><dt><a name="QuantumRegister-measure"><strong>measure</strong></a>(self)</dt><dd><tt>Make&nbsp;a&nbsp;measurement.&nbsp;Square&nbsp;all&nbsp;the&nbsp;amplitudes&nbsp;and&nbsp;choose&nbsp;a&nbsp;random&nbsp;state.<br>
+Outputs&nbsp;an&nbsp;integer&nbsp;representing&nbsp;the&nbsp;state&nbsp;measured&nbsp;(decimal&nbsp;system).<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state:&nbsp;&lt;int&gt;&nbsp;integer&nbsp;that&nbsp;corresponds&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;the&nbsp;state&nbsp;measured,&nbsp;in&nbsp;decimal&nbsp;format.</tt></dd></dl>
+
+<dl><dt><a name="QuantumRegister-normalise"><strong>normalise</strong></a>(self)</dt><dd><tt>Normalise&nbsp;coefficients&nbsp;of&nbsp;qubits&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="QuantumRegister-plot_bloch"><strong>plot_bloch</strong></a>(self)</dt><dd><tt>Creates&nbsp;a&nbsp;bloch&nbsp;sphere&nbsp;of&nbsp;the&nbsp;quantum&nbsp;register.</tt></dd></dl>
+
+<dl><dt><a name="QuantumRegister-plot_register"><strong>plot_register</strong></a>(self, show=True)</dt><dd><tt>Produce&nbsp;bar&nbsp;graph&nbsp;of&nbsp;quantum&nbsp;register.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;show:&nbsp;&lt;bool&gt;&nbsp;Flag&nbsp;that&nbsp;if&nbsp;set&nbsp;to&nbsp;true,&nbsp;shows&nbsp;the&nbsp;bar&nbsp;graph.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ax:&nbsp;axis&nbsp;handle&nbsp;object.</tt></dd></dl>
+
+<dl><dt><a name="QuantumRegister-split"><strong>split</strong></a>(self, n_a, n_b)</dt><dd><tt>Assuming&nbsp;the&nbsp;quantum&nbsp;register&nbsp;is&nbsp;not&nbsp;an&nbsp;entagled&nbsp;state,&nbsp;splits&nbsp;into&nbsp;two<br>
+subregisters&nbsp;given&nbsp;the&nbsp;length&nbsp;of&nbsp;each.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n:&nbsp;&lt;int&gt;&nbsp;Number&nbsp;of&nbsp;qubits&nbsp;of&nbsp;first&nbsp;subregister<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k:&nbsp;&lt;int&gt;&nbsp;Number&nbsp;of&nbsp;qubits&nbsp;of&nbsp;second&nbsp;subregister<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a,&nbsp;b:&nbsp;(&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;,&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;)&nbsp;Tuple&nbsp;containing&nbsp;the&nbsp;two&nbsp;sub_registers<br>
+&nbsp;<br>
+Raises&nbsp;error&nbsp;if&nbsp;n_a&nbsp;and&nbsp;n_b&nbsp;are&nbsp;not&nbsp;equal&nbsp;to&nbsp;the&nbsp;n_qubits.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;the&nbsp;quantum&nbsp;register&nbsp;is&nbsp;not&nbsp;entangled.&nbsp;Nonsensical<br>
+results&nbsp;will&nbsp;occur&nbsp;otherwise.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SWAPGate">class <strong>SWAPGate</strong></a>(<a href="qc_simulator.qc.html#Operator">Operator</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;implements&nbsp;a&nbsp;SWAP&nbsp;gate&nbsp;acting&nbsp;on&nbsp;an&nbsp;n&nbsp;qubit&nbsp;register.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc.html#SWAPGate">SWAPGate</a></dd>
+<dd><a href="qc_simulator.qc.html#Operator">Operator</a></dd>
+<dd><a href="qc_simulator.qc_interface.html#IOperator">qc_simulator.qc_interface.IOperator</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SWAPGate-__init__"><strong>__init__</strong></a>(self, n_qubits)</dt><dd><tt>&nbsp;Class&nbsp;constructor<br>
+&nbsp;Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n_qubits:&nbsp;&lt;int&gt;&nbsp;Number&nbsp;of&nbsp;qubits&nbsp;operator&nbsp;operates&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base:&nbsp;&lt;np.array&gt;&nbsp;Base&nbsp;matrix<br>
+&nbsp;<br>
+Raises&nbsp;error&nbsp;if&nbsp;n_qubits&nbsp;is&nbsp;less&nbsp;than&nbsp;or&nbsp;equal&nbsp;to&nbsp;0.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;n_qubits&nbsp;is&nbsp;&lt;int&gt;.<br>
+User&nbsp;must&nbsp;make&nbsp;sure&nbsp;that&nbsp;the&nbsp;size&nbsp;of&nbsp;base&nbsp;is&nbsp;consistant,&nbsp;i.e.&nbsp;a&nbsp;2&nbsp;by&nbsp;2<br>
+numpy&nbsp;array.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="qc_simulator.qc.html#Operator">Operator</a>:<br>
+<dl><dt><a name="SWAPGate-__mod__"><strong>__mod__</strong></a>(self, other)</dt><dd><tt>Overrides&nbsp;"%"&nbsp;operator&nbsp;to&nbsp;define&nbsp;tensor&nbsp;product&nbsp;between&nbsp;two&nbsp;operators.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Result&nbsp;of&nbsp;tensor&nbsp;product</tt></dd></dl>
+
+<dl><dt><a name="SWAPGate-__mul__"><strong>__mul__</strong></a>(self, rhs)</dt><dd><tt>Overrides&nbsp;multiplication&nbsp;operator&nbsp;and&nbsp;defined&nbsp;the&nbsp;multiplication&nbsp;between<br>
+two&nbsp;operators&nbsp;and&nbsp;an&nbsp;operator&nbsp;and&nbsp;a&nbsp;quantum&nbsp;register.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhs:&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side,&nbsp;can&nbsp;be&nbsp;either<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operator&nbsp;or&nbsp;quantum&nbsp;register<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;if&nbsp;rhs&nbsp;is&nbsp;of&nbsp;type&nbsp;<a href="#Operator">Operator</a>&nbsp;then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#Operator">Operator</a>.&nbsp;If&nbsp;it's&nbsp;of&nbsp;type&nbsp;<a href="#QuantumRegister">QuantumRegister</a>,&nbsp;then&nbsp;return&nbsp;a&nbsp;quantum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;object.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhs&nbsp;is&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;its&nbsp;number&nbsp;of&nbsp;qubits<br>
+do&nbsp;not&nbsp;correspond&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;qubits&nbsp;of&nbsp;the&nbsp;<a href="#Operator">Operator</a>.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhis&nbsp;is&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;of&nbsp;the&nbsp;same&nbsp;size.<br>
+&nbsp;<br>
+User&nbsp;needs&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;rhs&nbsp;is&nbsp;of&nbsp;the&nbsp;right&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="SWAPGate-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Provides&nbsp;method&nbsp;to&nbsp;pring&nbsp;out&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep:&nbsp;&lt;String&gt;&nbsp;String&nbsp;that&nbsp;corresponds&nbsp;the&nbsp;<a href="#SWAPGate-__str__">__str__</a>()&nbsp;method&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="SWAPGate-dag"><strong>dag</strong></a>(self)</dt><dd><tt>Computes&nbsp;hermitian&nbsp;transpose&nbsp;of&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;herm_transpse:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Hermitian&nbsp;transpose&nbsp;of&nbsp;operator</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="fGate">class <strong>fGate</strong></a>(<a href="qc_simulator.qc.html#Operator">Operator</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;implements&nbsp;an&nbsp;f-Gate,&nbsp;Uf.&nbsp;The&nbsp;action&nbsp;of&nbsp;Uf&nbsp;is&nbsp;defined&nbsp;as&nbsp;follows:<br>
+Uf*|x&gt;*|y&gt;&nbsp;=&nbsp;|x&gt;*|(y+f(x))%2&gt;<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc.html#fGate">fGate</a></dd>
+<dd><a href="qc_simulator.qc.html#Operator">Operator</a></dd>
+<dd><a href="qc_simulator.qc_interface.html#IOperator">qc_simulator.qc_interface.IOperator</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="fGate-__init__"><strong>__init__</strong></a>(self, f, n)</dt><dd><tt>Class&nbsp;constructor:<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f:&nbsp;&lt;type&nbsp;'function'&gt;&nbsp;callable&nbsp;function&nbsp;f&nbsp;defined&nbsp;from&nbsp;{0,1}^n&nbsp;-&gt;&nbsp;{0,1}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n:&nbsp;&lt;int&gt;&nbsp;number&nbsp;of&nbsp;states&nbsp;n&nbsp;acts&nbsp;on</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="qc_simulator.qc.html#Operator">Operator</a>:<br>
+<dl><dt><a name="fGate-__mod__"><strong>__mod__</strong></a>(self, other)</dt><dd><tt>Overrides&nbsp;"%"&nbsp;operator&nbsp;to&nbsp;define&nbsp;tensor&nbsp;product&nbsp;between&nbsp;two&nbsp;operators.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Result&nbsp;of&nbsp;tensor&nbsp;product</tt></dd></dl>
+
+<dl><dt><a name="fGate-__mul__"><strong>__mul__</strong></a>(self, rhs)</dt><dd><tt>Overrides&nbsp;multiplication&nbsp;operator&nbsp;and&nbsp;defined&nbsp;the&nbsp;multiplication&nbsp;between<br>
+two&nbsp;operators&nbsp;and&nbsp;an&nbsp;operator&nbsp;and&nbsp;a&nbsp;quantum&nbsp;register.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rhs:&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Right&nbsp;hand&nbsp;side,&nbsp;can&nbsp;be&nbsp;either<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operator&nbsp;or&nbsp;quantum&nbsp;register<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result:&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;/&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;if&nbsp;rhs&nbsp;is&nbsp;of&nbsp;type&nbsp;<a href="#Operator">Operator</a>&nbsp;then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#Operator">Operator</a>.&nbsp;If&nbsp;it's&nbsp;of&nbsp;type&nbsp;<a href="#QuantumRegister">QuantumRegister</a>,&nbsp;then&nbsp;return&nbsp;a&nbsp;quantum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;object.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhs&nbsp;is&nbsp;&lt;<a href="#QuantumRegister">QuantumRegister</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;its&nbsp;number&nbsp;of&nbsp;qubits<br>
+do&nbsp;not&nbsp;correspond&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;qubits&nbsp;of&nbsp;the&nbsp;<a href="#Operator">Operator</a>.<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;where&nbsp;rhis&nbsp;is&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;raises&nbsp;error&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;of&nbsp;the&nbsp;same&nbsp;size.<br>
+&nbsp;<br>
+User&nbsp;needs&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;rhs&nbsp;is&nbsp;of&nbsp;the&nbsp;right&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="fGate-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Provides&nbsp;method&nbsp;to&nbsp;pring&nbsp;out&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep:&nbsp;&lt;String&gt;&nbsp;String&nbsp;that&nbsp;corresponds&nbsp;the&nbsp;<a href="#fGate-__str__">__str__</a>()&nbsp;method&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="fGate-dag"><strong>dag</strong></a>(self)</dt><dd><tt>Computes&nbsp;hermitian&nbsp;transpose&nbsp;of&nbsp;operator.<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;herm_transpse:&nbsp;&lt;<a href="#Operator">Operator</a>&gt;&nbsp;Hermitian&nbsp;transpose&nbsp;of&nbsp;operator</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>pi</strong> = 3.141592653589793</td></tr></table>
+</body></html>

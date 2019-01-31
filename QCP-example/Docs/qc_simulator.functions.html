@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module qc_simulator.functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="qc_simulator.html"><font color="#ffffff">qc_simulator</font></a>.functions</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Candy%5Conedrive%5Cdocuments%5Cuniversity%5Cyear%203%5Cquantum%20computing%20project%5Cquantumcomputingproject%5Cqc_simulator%5Cfunctions.py">c:\users\andy\onedrive\documents\university\year 3\quantum computing project\quantumcomputingproject\qc_simulator\functions.py</a></font></td></tr></table>
+    <p><tt>University&nbsp;of&nbsp;Edinburgh,&nbsp;School&nbsp;of&nbsp;Physics&nbsp;and&nbsp;Astronomy<br>
+Quantum&nbsp;Comuting&nbsp;Project<br>
+&nbsp;<br>
+Helper&nbsp;functions&nbsp;containing&nbsp;allowing&nbsp;for&nbsp;the&nbsp;construction&nbsp;of&nbsp;various&nbsp;types<br>
+of&nbsp;quantum&nbsp;circuits.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-build_c_c_not"><strong>build_c_c_not</strong></a>(empty_qw_control=0, empty_qw_target=0)</dt><dd><tt>Builds&nbsp;a&nbsp;toffoli&nbsp;gate,&nbsp;given&nbsp;the&nbsp;number&nbsp;of&nbsp;I&nbsp;operators&nbsp;between&nbsp;the&nbsp;second&nbsp;control&nbsp;and&nbsp;the&nbsp;target&nbsp;qubit&nbsp;from&nbsp;the<br>
+first&nbsp;control.&nbsp;By&nbsp;default&nbsp;these&nbsp;distances&nbsp;are&nbsp;set&nbsp;to&nbsp;0&nbsp;and&nbsp;0&nbsp;respectively.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty_qw_control:&nbsp;&lt;int&gt;&nbsp;Number&nbsp;of&nbsp;empty&nbsp;quantum&nbsp;wires&nbsp;between&nbsp;first<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;second&nbsp;control&nbsp;qubits<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty_qw_target:&nbsp;&lt;int&gt;&nbsp;&nbsp;Number&nbsp;of&nbsp;empty&nbsp;quantum&nbsp;wires&nbsp;between<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;second&nbsp;control&nbsp;and&nbsp;target&nbsp;qubits<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toffoli:&nbsp;&lt;Operator&gt;&nbsp;toffoli&nbsp;gate&nbsp;(Operator&nbsp;Object)</tt></dd></dl>
+ <dl><dt><a name="-build_rev_c_c_not"><strong>build_rev_c_c_not</strong></a>(empty_qw_control=0, empty_qw_target=0)</dt><dd><tt>Builds&nbsp;a&nbsp;reverse&nbsp;toffoli&nbsp;gate,&nbsp;given&nbsp;the&nbsp;number&nbsp;of&nbsp;I&nbsp;operators&nbsp;between&nbsp;the&nbsp;second&nbsp;control&nbsp;and&nbsp;the&nbsp;target&nbsp;qubit&nbsp;from&nbsp;the<br>
+first&nbsp;control.&nbsp;By&nbsp;default&nbsp;these&nbsp;distances&nbsp;are&nbsp;set&nbsp;to&nbsp;0&nbsp;and&nbsp;0&nbsp;respectively.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty_qw_control:&nbsp;&lt;int&gt;&nbsp;Number&nbsp;of&nbsp;empty&nbsp;quantum&nbsp;wires&nbsp;between&nbsp;first<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;second&nbsp;control&nbsp;qubits<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty_qw_target:&nbsp;&lt;int&gt;&nbsp;&nbsp;Number&nbsp;of&nbsp;empty&nbsp;quantum&nbsp;wires&nbsp;between<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;second&nbsp;control&nbsp;and&nbsp;target&nbsp;qubits<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toffoli:&nbsp;&lt;Operator&gt;&nbsp;Reversed&nbsp;toffoli&nbsp;gate&nbsp;(Operator&nbsp;Object)</tt></dd></dl>
+ <dl><dt><a name="-build_rev_c_not"><strong>build_rev_c_not</strong></a>(empty_qw=0)</dt><dd><tt>Builds&nbsp;a&nbsp;reverse&nbsp;c&nbsp;not&nbsp;gate<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty_qw:&nbsp;&lt;int&gt;&nbsp;Number&nbsp;of&nbsp;qubits&nbsp;between&nbsp;the&nbsp;control&nbsp;and&nbsp;target<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gate:&nbsp;&lt;Operator&gt;&nbsp;Inverted&nbsp;not&nbsp;gate</tt></dd></dl>
+ <dl><dt><a name="-oracle_single_tag"><strong>oracle_single_tag</strong></a>(n, tag)</dt><dd><tt>Function&nbsp;that&nbsp;builds&nbsp;a&nbsp;quantum&nbsp;circuit&nbsp;representing&nbsp;an&nbsp;oragle&nbsp;that&nbsp;tags<br>
+a&nbsp;single&nbsp;state.<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n:&nbsp;&lt;int&gt;&nbsp;number&nbsp;of&nbsp;qubits&nbsp;the&nbsp;Operator&nbsp;operates&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tag:&nbsp;&lt;int&gt;&nbsp;tagged&nbsp;state<br>
+Outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oracle_gate:&nbsp;&lt;Operator&gt;&nbsp;oracle&nbsp;gate</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>pi</strong> = 3.141592653589793</td></tr></table>
+</body></html>

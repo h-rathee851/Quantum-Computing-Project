@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module qc_simulator.qc_interface</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="qc_simulator.html"><font color="#ffffff">qc_simulator</font></a>.qc_interface</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Candy%5Conedrive%5Cdocuments%5Cuniversity%5Cyear%203%5Cquantum%20computing%20project%5Cquantumcomputingproject%5Cqc_simulator%5Cqc_interface.py">c:\users\andy\onedrive\documents\university\year 3\quantum computing project\quantumcomputingproject\qc_simulator\qc_interface.py</a></font></td></tr></table>
+    <p><tt>University&nbsp;of&nbsp;Edinbugh,&nbsp;School&nbsp;of&nbsp;Physics&nbsp;and&nbsp;Astronomy<br>
+Quantum&nbsp;Computing&nbsp;Project<br>
+&nbsp;<br>
+Quantum&nbsp;Computer&nbsp;Simulator:&nbsp;Definition&nbsp;of&nbsp;interfaces&nbsp;for&nbsp;quantum&nbsp;register<br>
+and&nbsp;quantum&nbsp;logic&nbsp;gate&nbsp;<br>
+&nbsp;<br>
+Authors:&nbsp;Andreas&nbsp;Malekos,&nbsp;Gabriel&nbsp;Hoogervorst,&nbsp;Lewis&nbsp;Lappin,&nbsp;John&nbsp;Harbottle,<br>
+Wesley&nbsp;Shao&nbsp;Zhonghua,&nbsp;Huw&nbsp;Haigh</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="abc.html#ABC">abc.ABC</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="qc_simulator.qc_interface.html#IOperator">IOperator</a>
+</font></dt><dt><font face="helvetica, arial"><a href="qc_simulator.qc_interface.html#IQuantumRegister">IQuantumRegister</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IOperator">class <strong>IOperator</strong></a>(<a href="abc.html#ABC">abc.ABC</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Helper&nbsp;class&nbsp;that&nbsp;provides&nbsp;a&nbsp;standard&nbsp;way&nbsp;to&nbsp;create&nbsp;an&nbsp;<a href="abc.html#ABC">ABC</a>&nbsp;using<br>
+inheritance.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc_interface.html#IOperator">IOperator</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="IOperator-__mod__"><strong>__mod__</strong></a>(other:'IOperator') -&gt; 'IOperator'<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Define&nbsp;tensor&nbsp;product&nbsp;between&nbsp;operators</tt></dd></dl>
+
+<dl><dt><a name="IOperator-__mul__"><strong>__mul__</strong></a>(rhs)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Define&nbsp;multiplication&nbsp;between&nbsp;operators,&nbsp;and&nbsp;optionally,&nbsp;between&nbsp;operators&nbsp;and<br>
+quantum&nbsp;registers.</tt></dd></dl>
+
+<dl><dt><a name="IOperator-__str__"><strong>__str__</strong></a>()<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Define&nbsp;print&nbsp;method&nbsp;for&nbsp;operator&nbsp;objectself.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset({'__mod__', '__mul__', '__str__'})</dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IQuantumRegister">class <strong>IQuantumRegister</strong></a>(<a href="abc.html#ABC">abc.ABC</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Helper&nbsp;class&nbsp;that&nbsp;provides&nbsp;a&nbsp;standard&nbsp;way&nbsp;to&nbsp;create&nbsp;an&nbsp;<a href="abc.html#ABC">ABC</a>&nbsp;using<br>
+inheritance.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="qc_simulator.qc_interface.html#IQuantumRegister">IQuantumRegister</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="IQuantumRegister-__mul__"><strong>__mul__</strong></a>(other:'IQuantumRegister') -&gt; 'IQuantumRegister'<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Define&nbsp;multiplication&nbsp;between&nbsp;quantum&nbsp;registers</tt></dd></dl>
+
+<dl><dt><a name="IQuantumRegister-__str__"><strong>__str__</strong></a>()<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Define&nbsp;print&nbsp;method&nbsp;for&nbsp;the&nbsp;quantum&nbsp;register</tt></dd></dl>
+
+<dl><dt><a name="IQuantumRegister-measure"><strong>measure</strong></a>()<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Measure&nbsp;that&nbsp;defined&nbsp;measurement&nbsp;of&nbsp;quantum&nbsp;register</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset({'__mul__', '__str__', 'measure'})</dl>
+
+<hr>
+Data descriptors inherited from <a href="abc.html#ABC">abc.ABC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
