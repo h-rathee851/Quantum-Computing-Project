@@ -1,5 +1,6 @@
 """
 Generate the basic Quantum Gates
+So far haven't attempted to use complex numbers, but just ascribed two variables to each bit
 """
 
 """
