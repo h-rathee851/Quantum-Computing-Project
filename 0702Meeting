@@ -2,6 +2,7 @@
 
 Have decided to use matrix form for libraries
 - use sparse matrices 
+- Consider that not all states can be represented by matrix multiplication 
 
 //Status of Theory 
 
