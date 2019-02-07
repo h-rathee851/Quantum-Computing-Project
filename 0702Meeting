@@ -1,0 +1,21 @@
+//Overview
+
+Have decided to use matrix form for libraries
+- use sparse matrices 
+
+//Status of Theory 
+
+Look into tensor products as potential section of theory for report - could be a section on tensor algebra as a whole 
+
+Grover's Algorithm - compare to classical analog 
+
+
+//Tasks
+
+Sort out library of quantum functions
+- to do this will need to write new methods to take in sparse matrices (consult lecture slides)
+- sparse matrices, work out way to allow populated matrices to multiply with sparse ones etc.
+
+
+// New Meeting Time !!
+Will discuss later today - a time on Thursday seems best
