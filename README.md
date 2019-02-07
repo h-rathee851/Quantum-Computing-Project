@@ -20,6 +20,7 @@ Pauli-Y
 Pauli-Z
 
 C-V
+Swap
 C2-Not
 c-Vdagger
 Toffoli
