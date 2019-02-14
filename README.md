@@ -29,8 +29,10 @@ Quantum Adder
 
 Example documentation:
 
+
 def c_V_gate(control_qubit, target_qubit):
     """
+    
     :param control_qubit: (qubit) A qqubi
     :param target_qubit:
     :return: (np.array) a ma
@@ -43,3 +45,5 @@ def c_V_gate(control_qubit, target_qubit):
     out = np.dot(matrix, input)
     print(out)
     return out
+    
+ 
