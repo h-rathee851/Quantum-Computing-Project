@@ -11,6 +11,7 @@ Book about quantum computing by Nielsen: https://drive.google.com/file/d/1xmP3Zc
 
 Quantum computer simulation from Rigetti
 https://pyquil.readthedocs.io/en/stable/qvm.html#the-quantum-virtual-machine-qvm
+
 Gates to be used:
 
 Hadamard
