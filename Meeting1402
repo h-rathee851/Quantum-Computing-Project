@@ -1,0 +1,22 @@
+Tasks
+
+Library complete, add comments - as doc strings (three quotation marks) 
+
+Define search algorithm - numerical task would be simpler as doesn't require classification system 
+
+----------------------------------------------------------------
+
+Suggestion for quantum network - Rigetti lecture explained a method to create a class 'program' which performs the required 
+gates on the register and appears to be a straightforward way to organise the 
+
+For next time :
+
+Deividas - Set up instructions for the structure of the quantum network to solve the network 
+Ola - Write instructions for Shor's algorithm and cover, discuss point of algorithms
+Freddie - Begin writing method for library, write comments for code 
+Iain - write instructions 
+Harsh - will discuss - can begin to implement quantum network on instructions 
+
+
+Advice for method section - 'describe how program is structured, why you made the design choices you did, 
+perhaps you could also say how you do things differently, how you went about designing the porgram 
