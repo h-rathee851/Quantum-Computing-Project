@@ -13,9 +13,7 @@ class SparseMatrix:
 
     def setElement(self,i,j,m):
         if i >= self.rows or j >= self.columns:
-            raise IndexError(
-                             'Index out of range'
-                                )
+            raise IndexError('Index out of range')
         if abs(m) != 0:
             self.matrix[(i,j)] = m
         elif abs(m) == 0 and (i,j) in self.matrix:
@@ -47,10 +45,10 @@ class SparseMatrix:
                 for (k,l) in other.matrix:
                     if (j == k):
                         val = result.getElement(i,l)
-                        result.setElement(i, l, val + (self.matrix[(i,j)]*other.matrix[(k,l)]))
+                        result.setElement(i, l, val + (self.matrix[(i,j)]
+                                                        * other.matrix[(k,l)]))
         else:
-            raise ValueError(
-                    'Incompatible Dimentions')
+            raise ValueError('Incompatible Dimentions')
         return result
 
     #Define outer product
@@ -59,7 +57,8 @@ class SparseMatrix:
         result = SparseMatrix(self.rows*other.rows,self.columns*other.columns)
         for (i,j) in self.matrix:
             for (k,l) in other.matrix:
-                result.setElement( ((i*other.rows)+k), ((j*other.columns)+l), self.matrix[(i,j)]*other.matrix[(k,l)] )
+                result.setElement( ((i*other.rows)+k), ((j*other.columns)+l),
+                                    self.matrix[(i,j)]*other.matrix[(k,l)] )
         return result
 
     @staticmethod

@@ -44,14 +44,16 @@ class QuantumRegister(SparseMatrix):
                 probabilities_[i] = 0
         state =  int (np.random.choice(self.n_states, p=probabilities_))
         if doPrint:
-            print("The measured state is: |" + np.binary_repr(state, self.n_qubits) +">")
+            print("The measured state is: |"
+                + np.binary_repr(state, self.n_qubits) +">")
         return state
 
     def __str__(self):
         rep = ''
         for i in range(self.n_states):
             if (i,0) in self.matrix:
-                rep = rep + '({0:+.2f})'.format(self.matrix[(i,0)]) + "*|" + np.binary_repr(i, self.n_qubits) + "> "
+                rep = rep + '({0:+.2f})'.format(self.matrix[(i,0)]) + "*|"
+                    + np.binary_repr(i, self.n_qubits) + "> "
             else:
                 continue
         return rep
@@ -70,7 +72,8 @@ class QuantumRegister(SparseMatrix):
             result.normalize()
             return result
         else:
-            raise TypeError('Multiplication not defined between quantum register and {}.'.format(type(other)))
+            raise TypeError('Multiplication not defined between quantum\
+                            register and {}.'.format(type(other)))
 
     def plotRegister(self):
         x_ = []
@@ -122,16 +125,12 @@ class QuantumRegister(SparseMatrix):
                         if a_states_holder == new_b_states_[i]/b_states_[i]:
                             continue
                         elif new_b_states_[i] != 0 and b_states_[i] != 0:
-                            raise TypeError(
-                                'The registers are entangled'
-                                    )
+                            raise TypeError('The registers are entangled')
                         else:
                             continue
                     a_states_.append(a_states_holder*normal)
                 else:
-                    raise TypeError(
-                        'The registers are entangled'
-                        )
+                    raise TypeError('The registers are entangled')
             else:
                 a_states_.append(normal)
                 continue
