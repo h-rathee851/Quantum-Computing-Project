@@ -30,6 +30,10 @@ class Operator(SparseMatrix):
         self.matrix = result.matrix
 
     def __mul__(self, rhs):
+        """
+        :return: (QuantumRegister / Operator) Inner product result. Return type
+                depends on the type of the input rhs.
+        """
         if isinstance(rhs, QuantumRegister):
             result = QuantumRegister(n_qubits = self.n_qubits)
         elif isinstance(rhs, Operator):
@@ -46,6 +50,11 @@ class Operator(SparseMatrix):
         return result
 
     def __mod__(self, rhs):
+        """
+        Calculates the outer product betweeen its self and rhs.
+        :param: (Operator) rhs.
+        :return: (Operator) Outer product result.
+        """
         if isinstance(rhs, Operator):
             result = Operator(self.n_qubits + rhs.n_qubits)
             result.matrix = self.outerProduct(rhs).matrix

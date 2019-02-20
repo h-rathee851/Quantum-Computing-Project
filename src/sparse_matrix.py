@@ -12,6 +12,12 @@ class SparseMatrix:
         return
 
     def setElement(self, i, j, m):
+        """
+        Sets a cell (i, j) to the value of m within the matrix.
+        :param: (int) i, Row number of element to be set.
+        :param: (int) j, Column number of element to be set.
+        :param: (complex) m, The value of the cell.
+        """
         if i >= self.rows or j >= self.columns:
             raise IndexError('Index out of range.')
         if abs(m) != 0:
@@ -20,6 +26,12 @@ class SparseMatrix:
             del self.matrix[(i, j)]
 
     def getElement(self, i, j):
+        """
+        Returns the value stored at element (i, j) in the matrix.
+        :param: (int) i, Row of desired element.
+        :param: (int) j, Column of desired element.
+        :return: (complex), The value of element (i, j)
+        """
         if i >= self.rows or j >= self.columns:
             raise IndexError('Index out of range.')
         if (i, j) in self.matrix:
@@ -32,6 +44,10 @@ class SparseMatrix:
         return
 
     def __str__(self):
+        """
+        :return: (str) String representing the quantum register in a terminal
+                printable format.
+        """
         rep = ''
         for i in range(0, self.rows):
             row = ''

@@ -36,6 +36,11 @@ class QuantumRegister(SparseMatrix):
                 'Length of base states is incorrect!')
 
     def measure(self, doPrint=False):
+        """
+        Colllapses the quantum wavefunction in to a possible state.
+        :param: (bool) doPrint, True is the measurment of the system is to be
+                printed; False otherwise.
+        """
         probabilities_ = np.zeros(self.n_states)
         for i in range(self.n_states):
             if (i,0) in self.matrix:
@@ -49,6 +54,10 @@ class QuantumRegister(SparseMatrix):
         return state
 
     def __str__(self):
+        """
+        :return: (str) String representing the quantum register in a terminal
+                printable format.
+        """
         rep = ''
         for i in range(self.n_states):
             if (i, 0) in self.matrix:
@@ -59,6 +68,13 @@ class QuantumRegister(SparseMatrix):
         return rep
 
     def normalize(self):
+        """
+        Normalizes the magnitude of the quantum register s.t. the magnitude of
+        the register is equal to 1.
+        Example:
+            [[1],  => [[1/sqrt(2)],
+            [1]]      [1/sqrt(2)]]
+        """
         norm = 0
         for (i, j) in self.matrix:
             norm += abs(self.matrix[(i, j)])**2
@@ -66,6 +82,11 @@ class QuantumRegister(SparseMatrix):
             self.setElement(i, j, (1 / cmath.sqrt(norm)) * self.matrix[i, j])
 
     def __mul__ (self, other):
+        """
+        Computes the normalised outer product of the quantum register with
+        another matrix or other register.
+        :param: (QuantumRegister / SparseMatrix / numpy.array)
+        """
         if isinstance(other, QuantumRegister):
             result = QuantumRegister(self.n_qubits + other.n_qubits)
             result.matrix = self.outerProduct(other).matrix

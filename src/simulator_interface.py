@@ -42,7 +42,7 @@ class IRegister(SparseMatrix):
     @abc.abstractmethod
     def measure(self, doPrint=False):
         """
-        Colllapses the quantum superposition in to a possible state.
+        Colllapses the quantum wavefunction in to a possible state.
         :param: (bool) doPrint, True is the measurment of the system is to be
                 printed; False otherwise.
         """
