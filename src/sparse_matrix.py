@@ -84,6 +84,9 @@ class SparseMatrix:
     def add(m1,m2):
         return
 
+    def __add__(self, other):
+        pass
+
 
 def test():
     sm = SparseMatrix(2, 2)
