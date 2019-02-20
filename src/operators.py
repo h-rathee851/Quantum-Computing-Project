@@ -24,7 +24,7 @@ class CNot(Operator):
     Controlled not gate (or cX gate) which acts on 2 qubits and performs the not
     operation on the second qubit only when the first (control) qubit is |1>.
     """
-    def __init__(self, n_qubits: int=2):  # Check if n_qubits should be 2.
+    def __init__(self, n_qubits: int=2):  
         base = np.array([[1, 0, 0, 0],
                        [0, 1, 0, 0],
                        [0, 0, 0, 1],
@@ -63,7 +63,7 @@ class R_phi(Operator):
         super(TGate, self).__init__(n_qubits, base)
 
 class CVGate(Operator):
-    def __init__(self, n_qubits: int=2):  # Check if n_qubits should be 2.
+    def __init__(self, n_qubits: int=2):  
         base = np.array([[1, 0, 0, 0],
                        [0, 1, 0, 0],
                        [0, 0, 1, 0],
@@ -84,6 +84,7 @@ class Swap(Operator):
     """
     The Swap gate acts on two qubits and swaps the states of the two input
     qubits.
+    Example: |10> -> |01> or |01> -> |10>.
     """
     def __init__(self, n_qubits: int=2):  # Check if n_qubits should be 2.
         base = np.array([[1, 0, 0, 0],
