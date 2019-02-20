@@ -9,6 +9,9 @@ YT lecture about QP: https://www.youtube.com/watch?v=F_Riqjdh2oM&t=3465s&fbclid=
 
 Book about quantum computing by Nielsen: https://drive.google.com/file/d/1xmP3ZcVaypLzFtWMtpJhPuT6D3t__rC_/view?fbclid=IwAR0QROcKIVLmSHhGAQ5O0bIqK-oeysW3yGSfiL-Vf81yuBrmRBr0gSyY6Zc
 
+Quantum computer simulation from Rigetti
+https://pyquil.readthedocs.io/en/stable/qvm.html#the-quantum-virtual-machine-qvm
+
 Gates to be used:
 
 Hadamard
