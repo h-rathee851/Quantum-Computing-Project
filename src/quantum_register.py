@@ -59,7 +59,7 @@ class QuantumRegister(SparseMatrix):
         rep = ''
         for i in range(self.n_states):
             if (i, 0) in self.matrix:
-                rep = rep + '({0:+.2f})'.format(self.matrix[(i, 0)]) + "*|"
+                rep = rep + '({0:+.2f})'.format(self.matrix[(i, 0)]) + "*|"\
                     + np.binary_repr(i, self.n_qubits) + "> "
             else:
                 continue
