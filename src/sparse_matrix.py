@@ -2,6 +2,7 @@ import numpy as np
 from numpy.linalg import norm
 import cmath
 import matplotlib.pyplot as plt
+import copy
 
 class SparseMatrix:
     # rows and columns give the dimensions of the matrix
@@ -85,20 +86,49 @@ class SparseMatrix:
         return
 
     def __add__(self, other):
-        pass
+        result = copy.deepcopy(self)
+        if self.columns == other.columns and self.rows == other.rows:
+            for element in other.matrix:
+                result.setElement(element[0], element[1],
+                    self.getElement(element[0], element[1])
+                    + other.getElement(element[0], element[1]))
+        else:
+            raise ValueError('Incompatible Dimentions.')
+        return result
 
+    def __sub__(self, other):
+        result = copy.deepcopy(self)
+        if self.columns == other.columns and self.rows == other.rows:
+            for element in other.matrix:
+                result.setElement(element[0], element[1],
+                    self.getElement(element[0], element[1])
+                    - other.getElement(element[0], element[1]))
+        else:
+            raise ValueError('Incompatible Dimentions.')
+        return result
 
 def test():
     sm = SparseMatrix(2, 2)
+    sm.setElement(0, 1, 1)
     sm2 = SparseMatrix(2, 2)
     sm.setElement(0, 0, 5)
     sm2.setElement(0, 0, 20)
+    sm2.setElement(1,1, 2)
     print(sm)
-    print(sm.getElement(0, 0))
-    print(sm.matrix)
-    sm3 = sm.innerProduct(sm2)
-    print(sm3)
-    sm4 = sm3.outerProduct(sm)
-    print(sm4)
+    print("+")
+    print(sm2)
+    # print(sm2)
+    # print(sm)
+    # print(sm.getElement(0, 0))
+    # print(sm.matrix)
+    # sm3 = sm.innerProduct(sm2)
+    # print(sm3)
+    # sm4 = sm3.outerProduct(sm)
+    # print(sm4)
 
-# test()
+    print(sm+sm2)
+    print(sm)
+    print(sm + (sm+sm2))
+    print(sm-sm2)
+
+test()
