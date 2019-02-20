@@ -45,7 +45,6 @@ class Operator(SparseMatrix):
         result.matrix = self.innerProduct(rhs).matrix
         return result
 
-
     def __mod__(self, rhs):
         if isinstance(rhs, Operator):
             result = Operator(self.n_qubits + rhs.n_qubits)

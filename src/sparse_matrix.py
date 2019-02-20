@@ -20,6 +20,8 @@ class SparseMatrix:
             del self.matrix[(i, j)]
 
     def getElement(self, i, j):
+        if i >= self.rows or j >= self.columns:
+            raise IndexError('Index out of range.')
         if (i, j) in self.matrix:
             return self.matrix[(i, j)]
         else:
