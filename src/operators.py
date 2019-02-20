@@ -71,4 +71,4 @@ def test():
     cn = XGate()
     print(cn)
 
-test()
+# test()

@@ -2,15 +2,16 @@ import numpy as np
 from numpy.linalg import norm
 import cmath
 import matplotlib.pyplot as plt
+from sparse_matrix import SparseMatrix
 
-#Store qubit state
+# Store qubit state
 
 class QuantumRegister(SparseMatrix):
 
     def __init__(self, n_qubits = 1, base_state_ = None):
         self.n_states = 2**n_qubits
         self.n_qubits = n_qubits
-        super(QuantumRegister,self).__init__(self.n_states,1)
+        super(QuantumRegister, self).__init__(self.n_states,1)
         if base_state_ is None:
             self.setElement(0, 0, complex(1))
         else:
@@ -20,9 +21,7 @@ class QuantumRegister(SparseMatrix):
                         self.setElement(i, 0, complex(base_state_[i]))
                 self.normalize()
             else:
-                raise ValueError(
-                    'Length of states is incorrect!'
-                    )
+                raise ValueError('Length of states is incorrect!')
 
     def setState(self, state_):
         self.matrix.clear()
@@ -32,8 +31,7 @@ class QuantumRegister(SparseMatrix):
                     self.setElement(i, 0, complex(state_[i]))
             self.normalize()
         else:
-            raise ValueError(
-                'Length of base states is incorrect!')
+            raise ValueError('Length of base states is incorrect!')
 
     def measure(self, doPrint=False):
         """
