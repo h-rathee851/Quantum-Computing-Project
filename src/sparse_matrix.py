@@ -13,15 +13,15 @@ class SparseMatrix:
 
     def setElement(self, i, j, m):
         if i >= self.rows or j >= self.columns:
-            raise IndexError('Index out of range')
+            raise IndexError('Index out of range.')
         if abs(m) != 0:
-            self.matrix[(i,j)] = m
-        elif abs(m) == 0 and (i,j) in self.matrix:
-            del self.matrix[(i,j)]
+            self.matrix[(i, j)] = m
+        elif abs(m) == 0 and (i, j) in self.matrix:
+            del self.matrix[(i, j)]
 
-    def getElement(self,i,j):
-        if (i,j) in self.matrix:
-            return self.matrix[(i,j)]
+    def getElement(self, i, j):
+        if (i, j) in self.matrix:
+            return self.matrix[(i, j)]
         else:
             return 0
 
@@ -31,35 +31,35 @@ class SparseMatrix:
 
     def __str__(self):
         rep = ''
-        for i in range(0,self.rows):
+        for i in range(0, self.rows):
             row = ''
-            for j in range(0,self.columns):
-                row += str(self.getElement(i,j))+'\t'
+            for j in range(0, self.columns):
+                row += str(self.getElement(i, j))+'\t'
             rep += row + '\n'
         return rep
 
     # Define inner product
     def innerProduct(self, other):
-        result = SparseMatrix(self.rows,other.columns)
+        result = SparseMatrix(self.rows, other.columns)
         if self.columns == other.rows:
-            for (i,j) in self.matrix:
-                for (k,l) in other.matrix:
+            for (i, j) in self.matrix:
+                for (k, l) in other.matrix:
                     if (j == k):
-                        val = result.getElement(i,l)
-                        result.setElement(i, l, val + (self.matrix[(i,j)]
-                                                        * other.matrix[(k,l)]))
+                        val = result.getElement(i, l)
+                        result.setElement(i, l, val + (self.matrix[(i, j)]
+                                                        * other.matrix[(k, l)]))
         else:
-            raise ValueError('Incompatible Dimentions')
+            raise ValueError('Incompatible Dimentions.')
         return result
 
     #Define outer product
     #Other on the right
     def outerProduct(self, other):
-        result = SparseMatrix(self.rows*other.rows,self.columns*other.columns)
-        for (i,j) in self.matrix:
-            for (k,l) in other.matrix:
-                result.setElement( ((i*other.rows)+k), ((j*other.columns)+l),
-                                    self.matrix[(i,j)]*other.matrix[(k,l)] )
+        result = SparseMatrix(self.rows*other.rows, self.columns*other.columns)
+        for (i, j) in self.matrix:
+            for (k, l) in other.matrix:
+                result.setElement( ((i * other.rows) + k), ((j * other.columns) + l),
+                                    self.matrix[(i, j)] * other.matrix[(k, l)] )
         return result
 
     @staticmethod
