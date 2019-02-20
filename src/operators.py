@@ -10,7 +10,6 @@ class Hadamard(Operator):
     """
     Class that defines hadamard gate. This class extends the Operator class.
     """
-
     def __init__(self, n_qubits: int =1):
         # Define "base" hadamard matrix for one qubit and correponding sparse matrix
         base = 1 / np.sqrt(2) * np.array([[1, 1], [1, -1]])
