@@ -31,7 +31,7 @@ class Operator(SparseMatrix):
         super(Operator, self).__init__(self.size,self.size)
         self.matrix = result.matrix
 
-    def __mul__(self,rhs):
+    def __mul__(self, rhs):
         if isinstance(rhs, QuantumRegister):
             result = QuantumRegister(n_qubits = self.n_qubits)
         elif isinstance(rhs, Operator):
@@ -48,7 +48,7 @@ class Operator(SparseMatrix):
         return result
 
 
-    def __mod__(self,rhs):
+    def __mod__(self, rhs):
         if isinstance(rhs, Operator):
             result = Operator(self.n_qubits + rhs.n_qubits)
             result.matrix = self.outerProduct(rhs).matrix

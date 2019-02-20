@@ -16,6 +16,7 @@ class Hadamard(Operator):
         super(Hadamard, self).__init__(n_qubits, base)
 
 
+
 def test():
     H_1 = Hadamard(1)
 
@@ -23,4 +24,4 @@ def test():
 
     print((H_1%H_2))
 
-test()
+# test()
