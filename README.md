@@ -32,7 +32,7 @@ Quantum Adder
 
 Example documentation:
 
-```
+```python
 def c_V_gate(control_qubit, target_qubit):
     """
     
@@ -48,5 +48,5 @@ def c_V_gate(control_qubit, target_qubit):
     out = np.dot(matrix, input)
     print(out)
     return out
-    ```
+```
  
