@@ -48,8 +48,7 @@ class ZGate(Operator):
     the Z-axis of the Bloch sphere by pi radians.
     """
     def __init__(self, n_qubits: int=1):
-        base = np.array([[1, 0],
-                       [0,-1]])
+        base = np.diag([1, -1])
         super(ZGate, self).__init__(n_qubits, base)
 
 class R_phi(Operator):
@@ -58,16 +57,12 @@ class R_phi(Operator):
     angle phi along the plane of latitude of the Bloch sphere.
     """
     def __init__(self, phi, n_qubits: int=1):
-        base = np.array([[1, 0],
-                        [0, np.exp(1j * phi)]])
-        super(TGate, self).__init__(n_qubits, base)
+        base = np.diag([1, np.exp(1j * phi)])
+        super(R_phi, self).__init__(n_qubits, base)
 
 class CVGate(Operator):
     def __init__(self, n_qubits: int=2):  # Check if n_qubits should be 2.
-        base = np.array([[1, 0, 0, 0],
-                       [0, 1, 0, 0],
-                       [0, 0, 1, 0],
-                       [0, 0, 0, 1j]])
+        base = np.diag([1, 1, 1, 1j])
         super(CVGate, self).__init__(n_qubits, base)
 
 class YGate(Operator):
@@ -159,8 +154,10 @@ def test():
     # H_2 = Hadamard(1)
     #
     # print((H_1%H_2))
-    I = Identity()
-    M = H % I
-    print(M)
+    # I = Identity()
+    # M = H % I
+    # print(M)
+    r = R_phi(1)
+    print(r)
 
 test()
