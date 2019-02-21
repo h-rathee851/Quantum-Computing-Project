@@ -1,9 +1,17 @@
+#******************************************************************************#
+#                                                                              #
+# Creates Sparse Matricies which drive from the opperator class.               #
+# Contains the quantum gates: I, H, X, Y, Z, R_phi, RX, RY, RZ, CZ, CNOT,      #
+# CCNOT, S, T, SWAP, SQUSwap, CSWAP, ISWAP and PSWAP.                          #
+#                                                                              #
+#******************************************************************************#
+
 import numpy as np
 from numpy.linalg import norm
 import cmath
 import matplotlib.pyplot as plt
 from sparse_matrix import SparseMatrix
-from quantum_operator import Operator  # Couldn't just be called operator as operator already exists.
+from quantum_operator import Operator
 
 
 class I(Operator):
@@ -29,7 +37,6 @@ class H(Operator):
     the Z-axis and pi/2 about the Y-axis of a Bloch sphere.
     """
     def __init__(self, n_qubits: int=1):
-        # Define "base" hadamard matrix for one qubit and correponding sparse matrix
         base = 1 / np.sqrt(2) * np.array([[1, 1],
                                         [1, -1]])
         super(H, self).__init__(n_qubits, base)
@@ -52,7 +59,7 @@ class Y(Operator):
     The Pauli-Y gate acts on a single qubit. It equates to a rotation around the
     Y-axis of the Bloch sphere by pi radians.
     """
-    def __init__(self, n_qubits: int=1):  # Check if n_qubits should be 2.
+    def __init__(self, n_qubits: int=1):
         base = np.array([[0, 1j],
                         [1j, 0]])
         super(Y, self).__init__(n_qubits, base)
@@ -154,7 +161,7 @@ class SWAP(Operator):
     qubits.
     Example: |10> -> |01> or |01> -> |10>.
     """
-    def __init__(self, n_qubits: int=2):  # Check if n_qubits should be 2.
+    def __init__(self, n_qubits: int=2):
         base = np.array([[1, 0, 0, 0],
                         [0, 0, 1, 0],
                         [0, 1, 0, 0],
@@ -168,7 +175,7 @@ class SQUSwap(Operator):
     two qubits.
     qubits.
     """
-    def __init__(self, n_qubits: int=2):  # Check if n_qubits should be 2.
+    def __init__(self, n_qubits: int=2):
         base = np.array([[1, 0, 0, 0],
                         [0, (1/2)*(1+1j), (1/2)*(1-1j), 0],
                         [0, (1/2)*(1-1j), (1/2)*(1+1j), 0],
