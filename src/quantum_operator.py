@@ -2,8 +2,8 @@ import numpy as np
 from numpy.linalg import norm
 import cmath
 import matplotlib.pyplot as plt
-from sparse_matrix import SparseMatrix
-from quantum_register import QuantumRegister
+from src.sparse_matrix import SparseMatrix
+from src.quantum_register import QuantumRegister
 
 class Operator(SparseMatrix):
     def __init__(self, n_qubits : int=1, base = np.zeros((2,2))):

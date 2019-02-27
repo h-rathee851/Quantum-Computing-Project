@@ -10,9 +10,9 @@ import numpy as np
 from numpy.linalg import norm
 import cmath
 import matplotlib.pyplot as plt
-from sparse_matrix import SparseMatrix
-from quantum_operator import Operator
-from quantum_register import QuantumRegister
+from src.sparse_matrix import SparseMatrix
+from src.quantum_operator import Operator
+from src.quantum_register import QuantumRegister
 
 
 class I(Operator):
@@ -219,10 +219,6 @@ class PSWAP(Operator):
                         [0, np.exp(1j * phi), 0, 0],
                         [0, 0, 0, 1])
         super(PSWAP, self).__init__(n_qubits, base)
-
-
-
-
 
 
 def test():
