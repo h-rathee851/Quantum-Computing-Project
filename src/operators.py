@@ -219,11 +219,7 @@ class PSWAP(Operator):
                         [0, np.exp(1j * phi), 0, 0],
                         [0, 0, 0, 1])
         super(PSWAP, self).__init__(n_qubits, base)
-
-
-
-
-
+        
 
 def test():
     h = H(2)

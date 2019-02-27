@@ -102,7 +102,7 @@ class QuantumRegister(SparseMatrix):
                 x_.append("|" + np.binary_repr(i, self.n_qubits) + ">")
                 y_.append(abs(self.matrix[(i, 0)]))
         xpos_ = np.arange(len(x_))
-        plt.bar(xpos_,y_)
+        plt.bar(xpos_, y_)
         plt.xticks(xpos_, x_)
         plt.show()
 
