@@ -2,7 +2,10 @@ import numpy as np
 from numpy.linalg import norm
 import cmath
 import matplotlib.pyplot as plt
-from src.sparse_matrix import SparseMatrix
+try:
+    from src.sparse_matrix import SparseMatrix
+except:
+    from sparse_matrix import SparseMatrix
 
 
 class QuantumRegister(SparseMatrix):
