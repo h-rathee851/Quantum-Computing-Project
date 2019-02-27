@@ -2,9 +2,8 @@ import numpy as np
 from numpy.linalg import norm
 import cmath
 import matplotlib.pyplot as plt
-from sparse_matrix import SparseMatrix
+from src.sparse_matrix import SparseMatrix
 
-# Store qubit state
 
 class QuantumRegister(SparseMatrix):
 
