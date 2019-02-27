@@ -62,4 +62,4 @@ class Operator(SparseMatrix):
             return result
         else:
             raise TypeError('Operation not defined between operator and \
-                            {}.'.format(type(other)))
+                            {}.'.format(type(rhs)))
