@@ -1,0 +1,17 @@
+We think that the main structure is complete
+Next steps to make a user friendly interface that can apply grovers and shors.
+
+Areas of report that people can focus on.
+
+Freddie - detailed project plan so we know what steps need to go in the report with specific sections.
+
+Rough plan for who is writing what:
+   People doing what on the report:
+   Ola - Algorithm description and methodology for Shor's
+   Iain - Grover's method
+   Freddie - Results (Grover's) & conclusion 
+   Harsh - Method for building quantum simulator
+   Davidas - Results (Shor's)
+   
+Aim to have Grover's done over the next few days.
+Aim to start some more indepth writing.
