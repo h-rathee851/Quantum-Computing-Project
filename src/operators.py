@@ -12,6 +12,7 @@ import cmath
 import matplotlib.pyplot as plt
 from sparse_matrix import SparseMatrix
 from quantum_operator import Operator
+from quantum_register import QuantumRegister
 
 
 class I(Operator):
@@ -225,15 +226,17 @@ class PSWAP(Operator):
 
 
 def test():
-    H = Hadamard(1)
-    #
-    # H_2 = Hadamard(1)
-    #
-    # print((H_1%H_2))
-    # I = Identity()
-    # M = H % I
-    # print(M)
-    r = R_phi(1)
-    print(r)
+    h = H(2)
+    qr = QuantumRegister(2)
+    # #
+    # # H_2 = Hadamard(1)
+    # #
+    # # print((H_1%H_2))
+    # i = *I()
+    M = h * qr
+    print(M)
+
+    # r = R_phi(1)
+    # print(r)
 
 # test()
