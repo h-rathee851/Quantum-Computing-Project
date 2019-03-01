@@ -60,15 +60,15 @@ class Grover:
         self.D = a * b * c * d * e
         return self.D
 
-    def gen_oricle(self):
-        self.oricle = Oricle(self.target_state)
-        return self.oricle
+    def gen_oracle(self):
+        self.oricle = Oracle(self.target_state)
+        return self.oracle
 
     def run(self, k):
         # k is the number of tagged states
         runs = round( ((math.pi / 4) / math.sqrt(k)) * 2**(self.n_qubits / 2))
         for i in range(runs):
-            self.qr = self.oricle * self.qr
+            self.qr = self.oracle * self.qr
             self.qr = self.D * self.qr
         result = self.qr.measure()
         return result
