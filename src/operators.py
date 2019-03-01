@@ -28,7 +28,7 @@ class I(Operator):
     each element on the major diagonal to 1 while leving all other elements 0.
     """
     def __init__(self, n_qubits: int=1):
-        dimension = 2*n_qubits
+        dimension = 2**n_qubits
         base = np.zeros((dimension, dimension))
         for i in range(dimension):
             for j in range(dimension):
