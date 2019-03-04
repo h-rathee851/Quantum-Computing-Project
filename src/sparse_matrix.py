@@ -41,7 +41,12 @@ class SparseMatrix:
             return 0
 
     def getHermTranspose(self):
-        # TODO:
+      
+        for i in range(self.columns):
+            for j in range(self.rows):
+                if( (i,j) in self.matrix):
+                    self.setElement(j,i,np.conj(self.getElement(i,j)))      
+        
         return
 
     def __str__(self):
