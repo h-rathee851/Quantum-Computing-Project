@@ -5,9 +5,7 @@
 # CCNOT, S, T, SWAP, SQUSwap, CSWAP, ISWAP and PSWAP.                          #
 #                                                                              #
 #******************************************************************************#
-"""
-@author: QCP Group 1
-"""
+
 import numpy as np
 from numpy.linalg import norm
 import cmath

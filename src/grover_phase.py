@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 try:
     from src.sparse_matrix import SparseMatrix
     from src.quantum_register import QuantumRegister
-    from src.quantum_operator.py import Operator
+    from src.quantum_operator import Operator
 except:
     from sparse_matrix import SparseMatrix
     from quantum_register import QuantumRegister

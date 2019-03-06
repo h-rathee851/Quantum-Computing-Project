@@ -1,34 +1,33 @@
-#******************************************************************************#
-#                                                                              #
-#                         Source code for Grover's                             #
-#                            search algorithm.                                 #
-#                                                                              #
-#******************************************************************************#
-
-
 import numpy as np
 from numpy.linalg import norm
 import cmath
+import math
 import matplotlib.pyplot as plt
+
 try:
     from src.sparse_matrix import SparseMatrix
     from src.quantum_register import QuantumRegister
     from src.quantum_operator import Operator
     from src.operators import *
+    from src.oracle import *
+    from src.grover_phase import *
 except:
     from sparse_matrix import SparseMatrix
     from quantum_register import QuantumRegister
     from quantum_operator import Operator
     from operators import *
+    from oracle import *
+    from grover_phase import *
 
 
 class Grover:
-    def __init__(self, n_qubits, target_state):
+    def __init__(self, n_qubits, target_state=None):
         self.n_qubits = n_qubits
-        self.target_state = target_state
+        self.target_multiples = target_state
         self.qr = None
         self.D = None
         self.oricle = None
+        self.results = []
 
     def build_quantum_register(self):
         self.qr = QuantumRegister(self.n_qubits)
@@ -43,32 +42,62 @@ class Grover:
         h2 = H(self.n_qubits)
         empty_register = QuantumRegister(self.n_qubits)
         self.qr = h * self.qr
-        aux = h * x * empty_register
-        self.qr = self.qr * aux
         return self.qr
 
     def init_reflection_matrix(self):
         h = H(self.n_qubits)
-        i = I(self.n_qubits)
-        x = X(self.n_qubits)
-        cnot = CNOT(2*self.n_qubits)
-        a = (h % i)
-        b = (x % i)
-        c = cnot
-        d = (x % i)
-        e = (h % i)
-        self.D = a * b * c * d * e
+        c = G_Phase(self.n_qubits)
+        self.D = h * c * h
         return self.D
 
     def gen_oracle(self):
-        self.oricle = Oracle(self.target_state)
+        # self.oracle = Oracle(self.n_qubits)
+        self.oracle = GeneralOracle(self.target_multiples, self.n_qubits)
         return self.oracle
 
     def run(self, k):
         # k is the number of tagged states
-        runs = round( ((math.pi / 4) / math.sqrt(k)) * 2**(self.n_qubits / 2))
+        # runs = round(math.sqrt(self.n_qubits/k))
+        # runs = round( ((math.pi / 4) * math.sqrt(k)) * 2**(self.n_qubits / 2))  # / or *
+        # runs = round((math.pi / 4) * math.sqrt(2**self.n_qubits))
+        # runs = 10* round(math.sqrt(2**self.n_qubits))
+        # print(runs)
+        runs = 100
         for i in range(runs):
             self.qr = self.oracle * self.qr
             self.qr = self.D * self.qr
+            self.qr.normalize()
         result = self.qr.measure()
+        self.results.append(result)
         return result
+
+    def plot_results(self):
+        # bins = np.arange(0, max(self.results) + 1.5)# - 0.5
+        bins = 2**self.n_qubits
+        x = np.array(self.results)
+        plt.hist(self.results, bins)
+        plt.show()
+
+
+def runG():
+    g = Grover(3)
+    g.build_quantum_register()
+    g.init_register()
+    g.init_reflection_matrix()
+    g.gen_oracle()
+    return g.run(3)
+
+def plot():
+    x = []
+    for i in range(0,1000):
+        x.append(runG())
+    bins = np.arange(0, max(x) + 1.5) - 0.5
+    x = np.array(x)
+    plt.hist(x)
+    plt.show()
+
+if __name__ == '__main__':
+    # test = QuantumRegister(3,[1,1,1,1,1,1,1,1])
+    # o = Oracle(3)
+    # print(o*test)
+    plot()
