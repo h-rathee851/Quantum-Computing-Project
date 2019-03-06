@@ -1,6 +1,6 @@
 #******************************************************************************#
 #                                                                              #
-# Creates Sparse Matricies which drive from the opperator class.               #
+# Creates Sparse Matricies which derive from the opperator class.               #
 # Contains the quantum gates: I, H, X, Y, Z, R_phi, RX, RY, RZ, CZ, CNOT,      #
 # CCNOT, S, T, SWAP, SQUSwap, CSWAP, ISWAP and PSWAP.                          #
 #                                                                              #
@@ -23,7 +23,7 @@ except:
 class I(Operator):
     """
     Identity operator. Created an identity matrix of size 2*n_qubits and sets
-    each element on the major diagonal to 1 while leving all other elements 0.
+    each element on the major diagonal to 1 while leaving all other elements 0.
     """
     def __init__(self, n_qubits: int=1):
         dimension = 2**n_qubits
@@ -39,8 +39,11 @@ class H(Operator):
     """
     Hadamard gate acts on a single qubit. This gate maps the state,
     |0> to (|0> + |1>) / sqrt(2) and |1> to (|0> - |1>) / sqrt(2), creating a
-    super position of the two states. This represesnts a rotation of pi about
+    super position of the two states. This represents a rotation of pi about
     the Z-axis and pi/2 about the Y-axis of a Bloch sphere.
+
+    If more than one qubits is selected in the argument,
+    then a matrix is generated to apply a Hadamard gate individually to all of the qubits
     """
     def __init__(self, n_qubits: int=1):
         base = 1 / np.sqrt(2) * np.array([[1, 1],
@@ -50,8 +53,8 @@ class H(Operator):
 
 class X(Operator):
     """
-    Pauli-X gate acts on a single qubit. It is the quantum equivelent of the
-    classical NOT gate. This is equivelent to a rotaation of the Bloch sphere
+    Pauli-X gate acts on a single qubit. It is the quantum equivalent of the
+    classical NOT gate. This is equivalent to a rotation of the Bloch sphere
     through pi radians about the X-axis.
     """
     def __init__(self, n_qubits: int=1):
@@ -73,7 +76,7 @@ class Y(Operator):
 
 class Z(Operator):
     """
-    Pauli-Z gate acts on a single qubit. It is equivelent to a rotation about
+    Pauli-Z gate acts on a single qubit. It is equivalent to a rotation about
     the Z-axis of the Bloch sphere by pi radians.
     """
     def __init__(self, n_qubits: int=1):
@@ -92,6 +95,10 @@ class R_phi(Operator):
 
 
 class RX(Operator):
+    """
+    Rotation about X gate. This acts on a single qubit and rotates
+    through an angle phi perpendicular to the X axis of the Bloch sphere.
+    """
     def __init__(self, phi, n_qubits: int=1):
         base = np.array([[np.cos(phi / 2.), -1j * np.sin(phi / 2.)],
                         [-1j * np.sin(phi / 2.), np.cos(phi / 2.)]])
@@ -99,6 +106,10 @@ class RX(Operator):
 
 
 class RY(Operator):
+    """
+    Rotation about Y gate. This acts on a single qubit and rotates
+    through an angle phi perpendicular to the Y axis of the Bloch sphere.
+    """
     def __init__(self, phi, n_qubits: int=1):
         base = np.array([[np.cos(phi / 2.), -np.sin(phi / 2.)],
                         [np.sin(phi / 2.), np.cos(phi / 2.)]])
@@ -106,6 +117,10 @@ class RY(Operator):
 
 
 class RZ(Operator):
+    """
+    Rotation about Z gate. This acts on a single qubit and rotates
+    through an angle phi perpendicular to the Z axis of the Bloch sphere.
+    """
     def __init__(self, phi, n_qubits: int=1):
         base = np.array([[np.cos(phi / 2.) -1j * np.sin(phi / 2.), 0],
                         [0, -1j * np.sin(phi / 2.) + np.cos(phi / 2.)]])
@@ -113,6 +128,11 @@ class RZ(Operator):
 
 
 class CZ(Operator):
+    """
+    The Controlled-Z gate, which acts on 2 qubits,
+    performing the Z transformation on the second qubit
+    only when the first is in state |1>.
+    """
     def __init__(self, n_qubits: int=2):
         base = np.diag([1, 1, 1, -1])
         super(CZ, self).__init__(n_qubits, base)
@@ -133,8 +153,8 @@ class CNOT(Operator):
 
 class CCNOT(Operator):
     """
-    Toffoli (CCNOT) gate. This is a three quibit gate which performs the NOT
-    opperation on the third qubit if states both one and two are in state |1>.
+    Toffoli (CCNOT) gate. This is a three qubit gate which performs the NOT
+    operation on the third qubit if states both one and two are in state |1>.
     """
     def __init__(self, n_qubits: int=3):
         base = np.array([[1, 0, 0, 0, 0, 0, 0, 0],  # We should probably come up with a better way of doing this.
@@ -149,12 +169,20 @@ class CCNOT(Operator):
 
 
 class S(Operator):
+    """
+    The Phase (pi/2) rotation gate. Rotates a single qubit by pi/2 radians
+    perpendicular to the real axis
+    """
     def __init__(self, n_qubits: int=1):
         base = np.diag([1, 1j])
         super(S, self).__init__(n_qubits, base)
 
 
 class T(Operator):
+    """
+    The Phase (pi/4) rotation gate. Rotates a single qubit by pi/4 radians
+    perpendicular to the real axis
+    """
     def __init__(self, n_qubits: int=1):
         base = np.diag([1, cmath.exp(1j * np.pi / 4.0)])
         super(T, self).__init__(n_qubits, base)
@@ -209,6 +237,10 @@ class CSWAP(Operator):
 
 
 class ISWAP(Operator):
+    """
+    ISWAP gate performs the conventional SWAP
+    and performs a pi/2 rotation in the imaginary plane
+    """
     def __init__(self, n_qubits: int=2):
         base = np.array([1, 0, 0, 0],
                         [0, 0, 1j, 0],
@@ -218,7 +250,11 @@ class ISWAP(Operator):
 
 
 class PSWAP(Operator):
-    def __init__(self, n_qubits: int=2):
+    """
+    PSWAP gate performs the conventional SWAP
+    then rotates by phi in the imaginary plane
+    """
+    def __init__(self, phi, n_qubits: int=2):
         base = np.array([1, 0, 0, 0],
                         [0, 0, np.exp(1j * phi), 0],
                         [0, np.exp(1j * phi), 0, 0],
