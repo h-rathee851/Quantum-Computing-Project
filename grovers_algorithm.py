@@ -10,6 +10,7 @@ import numpy as np
 from numpy.linalg import norm
 import cmath
 import matplotlib.pyplot as plt
+import os
 
 from src.grover import Grover
 
@@ -24,23 +25,23 @@ from src.grover_phase import *
 
 
 def main(args):
-    if len(args) != 2:
+    if len(args) != 3:
         print("Add the number of qubits and target state.")
-        print("python grovers_algorithm.py n_qubits target_state")
+        print("python grovers_algorithm.py n_qubits [1:multiples-of or 2:powers-of] target-number")
         sys.exit()
 
     n_qubits = int(args[0])
-    target_state = int(args[1])
+    test = args[1]
+    target_number = int(args[2])
 
-
-    p = Grover(n_qubits, target_state)
+    p = Grover(n_qubits, target_number)
     p.build_quantum_register()
     p.init_register()
     p.init_reflection_matrix()
-    p.gen_oracle()
-    itterations = 1000
+    p.gen_oracle(test)
+    itterations = 500
     for i in range(itterations):
-        sys.stdout.write("Simulation progress: %.1f%%\r"
+        sys.stdout.write("Simulation progress: %.0f%%\r"
                                 % ((100 * i / itterations)))
         sys.stdout.flush()  # Prints progress of simulation.
         result = p.run(20)

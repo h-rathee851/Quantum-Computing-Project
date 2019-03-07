@@ -3,6 +3,7 @@ from numpy.linalg import norm
 import cmath
 import math
 import matplotlib.pyplot as plt
+import os
 
 try:
     from src.sparse_matrix import SparseMatrix
@@ -21,9 +22,9 @@ except:
 
 
 class Grover:
-    def __init__(self, n_qubits, target_state=None):
+    def __init__(self, n_qubits, target_number=None):
         self.n_qubits = n_qubits
-        self.target_multiples = target_state
+        self.target_number = target_number
         self.qr = None
         self.D = None
         self.oricle = None
@@ -50,9 +51,16 @@ class Grover:
         self.D = h * c * h
         return self.D
 
-    def gen_oracle(self):
-        # self.oracle = Oracle(self.n_qubits)
-        self.oracle = GeneralOracle(self.target_multiples, self.n_qubits)
+    def gen_oracle(self, selection=1):
+        if selection == 5:
+            self.oracle = Oracle(self.n_qubits)
+        elif (selection == '1' or selection == 'multiples'
+            or selection == 'multiples-of'):
+            self.oracle = GeneralOracle(self.target_number, 1, self.n_qubits)
+        elif (selection == '2' or selection == 'powers'
+            or selection == 'powers-of'):
+            self.oracle = GeneralOracle(self.target_number, 2, self.n_qubits)
+
         return self.oracle
 
     def run(self, k):
@@ -72,12 +80,18 @@ class Grover:
         return result
 
     def plot_results(self):
-        # bins = np.arange(0, max(self.results) + 1.5)# - 0.5
-        bins = 2**self.n_qubits
+        bins = np.arange(2**self.n_qubits) - 0.5
         x = np.array(self.results)
-        plt.hist(self.results, bins)
+        plt.hist(self.results, bins=bins, rwidth=0.95)
+        plt.ylabel("State measurement frequency")
+        plt.xlabel("States")
+        plt.title("Measurement frequency plot")
         plt.show()
 
+
+################################################################################
+# Class test functions.
+################################################################################
 
 def runG():
     g = Grover(3)
