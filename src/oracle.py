@@ -56,7 +56,7 @@ class GeneralOracle(Operator):
         if (query == 1):  # Finds multiples of n.
             self.shape = lambda t: t % n
             for i in range(dimension):
-                if (self.shape(i) == 0):
+                if (self.shape(i) == 0) and i != 0:
                     base[i][i] = -1
                 else:
                     base[i][i] = 1

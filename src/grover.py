@@ -68,9 +68,9 @@ class Grover:
         # runs = round(math.sqrt(self.n_qubits/k))
         # runs = round( ((math.pi / 4) * math.sqrt(k)) * 2**(self.n_qubits / 2))  # / or *
         # runs = round((math.pi / 4) * math.sqrt(2**self.n_qubits))
-        # runs = 10* round(math.sqrt(2**self.n_qubits))
+        runs = 10* round(math.sqrt(2**self.n_qubits))
         # print(runs)
-        runs = 100
+        # runs = 100
         for i in range(runs):
             self.qr = self.oracle * self.qr
             self.qr = self.D * self.qr
