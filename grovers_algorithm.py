@@ -39,7 +39,8 @@ def main(args):
     p.init_register()
     p.init_reflection_matrix()
     p.gen_oracle(test)
-    itterations = 200
+    # itterations = 50
+    itterations = 2**n_qubits
     for i in range(itterations):
         sys.stdout.write("Simulation progress: %.0f%%\r"
                                 % ((100 * i / itterations)))
