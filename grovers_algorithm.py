@@ -25,28 +25,35 @@ from src.grover_phase import *
 
 
 def main(args):
-    if len(args) != 3:
+    if len(args) > 4:
         print("Add the number of qubits and target state.")
-        print("python grovers_algorithm.py n_qubits [1:multiples-of or 2:powers-of] target-number")
+        print("python grovers_algorithm.py n_qubits [1:multiples-of or 2:powers-of] target-number optional(number of target states)")
+        sys.exit()
+    elif len(args) == 4 and type(int(args[3])) != np.int:
+        print("Add the number of qubits and target state.")
+        print("python grovers_algorithm.py n_qubits [1:multiples-of or 2:powers-of] target-number optional(number of target states)")
         sys.exit()
 
     n_qubits = int(args[0])
     test = args[1]
     target_number = int(args[2])
+    n_states = -1  # Default value assuming an unknown number of states.
+    if len(args) == 4:
+        n_states = int(args[3])
 
     p = Grover(n_qubits, target_number)
     p.build_quantum_register()
     p.init_register()
     p.init_reflection_matrix()
     p.gen_oracle(test)
-    # itterations = 50
-    itterations = 2**n_qubits
+    itterations = 5000
     for i in range(itterations):
         sys.stdout.write("Simulation progress: %.0f%%\r"
                                 % ((100 * i / itterations)))
         sys.stdout.flush()  # Prints progress of simulation.
-        result = p.run(20)
+        result = p.run(n_states)
     p.plot_results()
+    p.print_results(itterations)
 
 if __name__ == '__main__':
     main(sys.argv[1:])

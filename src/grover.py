@@ -1,3 +1,10 @@
+#******************************************************************************#
+#                                                                              #
+#                         Source code for Grover's                             #
+#                            search algorithm.                                 #
+#                                                                              #
+#******************************************************************************#
+
 import numpy as np
 from numpy.linalg import norm
 import cmath
@@ -47,8 +54,8 @@ class Grover:
 
     def init_reflection_matrix(self):
         h = H(self.n_qubits)
-        c = G_Phase(self.n_qubits)
-        self.D = h * c * h
+        r = G_Phase(self.n_qubits)
+        self.D = h * r * h
         return self.D
 
     def gen_oracle(self, selection=1):
@@ -63,15 +70,16 @@ class Grover:
 
         return self.oracle
 
-    def run(self, k):
+    def run(self, k=None):
         # k is the number of tagged states
-        # runs = round(math.sqrt(self.n_qubits/k))
-        # runs = round( ((math.pi / 4) * math.sqrt(k)) * 2**(self.n_qubits / 2))  # / or *
-        # runs = round((math.pi / 4) * math.sqrt(2**self.n_qubits))
-        runs = 10* round(math.sqrt(2**self.n_qubits))
-        # print(runs)
-        # runs = 100
-        for i in range(runs):
+        if k == 1:
+            runs = round(np.sin(np.pi/8) * np.sqrt(self.n_qubits))
+        elif k > 1:
+            runs = round(np.sqrt(self.n_qubits))
+        else:
+            runs = round(np.sqrt(self.n_qubits))
+
+        for i in range(int(runs)):
             self.qr = self.oracle * self.qr
             self.qr = self.D * self.qr
             self.qr.normalize()
@@ -88,6 +96,16 @@ class Grover:
         plt.title("Measurement frequency plot")
         plt.show()
 
+    def print_results(self, itterations):
+        r = np.sort(self.results)
+        unique, counts = np.unique(r, return_counts=True)
+        d = dict(zip(unique, counts))
+        print("\n\nOf %d measurements:\n" % itterations)
+        for key, value in sorted(d.items()):
+            if value == 1:
+                print("%d, measured %d time." % (key, value))
+            else:
+                print("%d, measured %d times." % (key, value))
 
 ################################################################################
 # Class test functions.
