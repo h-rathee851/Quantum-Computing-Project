@@ -23,7 +23,6 @@ from src.oracle import *
 from src.grover_phase import *
 
 
-
 def main(args):
     if len(args) > 4:
         print("Add the number of qubits and target state.")
