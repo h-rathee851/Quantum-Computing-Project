@@ -26,11 +26,13 @@ from src.grover_phase import *
 def main(args):
     if len(args) > 4:
         print("Add the number of qubits and target state.")
-        print("python grovers_algorithm.py n_qubits [1:multiples-of or 2:powers-of] target-number optional(number of target states)")
+        print("python grovers_algorithm.py n_qubits [1:multiples-of or\
+            2:powers-of] target-number optional(number of target states)")
         sys.exit()
     elif len(args) == 4 and type(int(args[3])) != np.int:
         print("Add the number of qubits and target state.")
-        print("python grovers_algorithm.py n_qubits [1:multiples-of or 2:powers-of] target-number optional(number of target states)")
+        print("python grovers_algorithm.py n_qubits [1:multiples-of or\
+            2:powers-of] target-number optional(number of target states)")
         sys.exit()
 
     n_qubits = int(args[0])
