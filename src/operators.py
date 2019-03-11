@@ -335,7 +335,8 @@ class CUGate(Operator):
             control_qubit_indices = np.arange(self.n_control)
             # Exclude the item of self.empty_qw because it's the number of empty
             # lines between the last control and first target qubit
-            control_qubit_indices[1: ] = control_qubit_indices[1:] + self.empty_qw[:-1]
+            control_qubit_indices[1:] = (control_qubit_indices[1:]
+                                        + self.empty_qw[:-1])
             return control_qubit_indices
 
     def __reverse(self):

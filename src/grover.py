@@ -107,9 +107,9 @@ class Grover:
             or selection == 'powers-of'):
             self.oracle = GeneralOracle(self.target_number, 2, self.n_qubits)
         else:
-            print("Problem selection not valid. Try either: multiples-of. \
-            Where selection is '1' or 'multiples' or 'multiples-of'. Or; \
-            powers-of. Where selection is '2' or 'powers' or 'powers-of'.")
+            print("Problem selection not valid. Try either: multiples-of." +
+            "Where selection is '1' or 'multiples' or 'multiples-of'. Or;" +
+            "powers-of. Where selection is '2' or 'powers' or 'powers-of'.")
             sys.exit()
         return self.oracle
 

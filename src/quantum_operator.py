@@ -16,8 +16,8 @@ class Operator(SparseMatrix):
         self.n_qubits = n_qubits
         self.size = 2 ** n_qubits
         if self.size < len(base):
-            raise ValueError('Operator cannot act on the specified number\
-                            of qubits.')
+            raise ValueError("Operator cannot act on the specified number" +
+                            "of qubits.")
         act_qubits = int(np.log2(len(base)))
         base_matrix = SparseMatrix(*[len(base)]*2)
         for i in range(0, len(base)):
@@ -45,12 +45,12 @@ class Operator(SparseMatrix):
             result = Operator(n_qubits = self.n_qubits)
         else :
             " Raise type error if the right type isn't provided"
-            raise TypeError('Multiplication not defined for Operator\
-                            and {}.'.format(type(rhs)))
+            raise TypeError('Multiplication not defined for Operator' +
+                            ' and {}.'.format(type(rhs)))
         if rhs.n_qubits != self.n_qubits:
                 raise ValueError(
-                    'Number of states do not correspnd: rhs.n_qubits = {},\
-                     lhs.n_qubits = {}'.format(rhs.n_qubits, self.n_qubits))
+                    'Number of states do not correspnd: rhs.n_qubits = {},' +
+                    ' lhs.n_qubits = {}'.format(rhs.n_qubits, self.n_qubits))
         result.matrix = self.innerProduct(rhs).matrix
         return result
 
@@ -65,5 +65,5 @@ class Operator(SparseMatrix):
             result.matrix = self.outerProduct(rhs).matrix
             return result
         else:
-            raise TypeError('Operation not defined between operator and \
-                            {}.'.format(type(rhs)))
+            raise TypeError('Operation not defined between operator and ' +
+                            '{}.'.format(type(rhs)))
