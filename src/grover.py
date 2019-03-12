@@ -121,7 +121,7 @@ class Grover:
         if k == 1:
             runs = round(np.sin(np.pi/8) * np.sqrt(self.n_qubits))
         elif k > 1:
-            runs = round(np.sqrt(self.n_qubits))
+            runs = round(np.sqrt(self.n_qubits/k))
         else:
             runs = round(np.sqrt(self.n_qubits))
 
