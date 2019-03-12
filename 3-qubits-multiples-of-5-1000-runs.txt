@@ -1,0 +1,11 @@
+
+Of 1000 measurements:
+
+   0, measured   73 times. Selected 7.3% of the time.
+   1, measured   53 times. Selected 5.3% of the time.
+   2, measured   88 times. Selected 8.8% of the time.
+   3, measured   64 times. Selected 6.4% of the time.
+   4, measured   64 times. Selected 6.4% of the time.
+   5, measured  511 times. Selected 51.1% of the time.
+   6, measured   78 times. Selected 7.8% of the time.
+   7, measured   69 times. Selected 6.9% of the time.
