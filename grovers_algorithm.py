@@ -24,7 +24,7 @@ from src.grover_phase import *
 
 
 def main(args):
-    if len(args) > 4:
+    if len(args) > 4 or len(args) < 3:
         print("Add the number of qubits and target state.")
         print("python grovers_algorithm.py n_qubits [1:multiples-of or" +
             "2:exponents-of] target-number optional(number of target states)")
