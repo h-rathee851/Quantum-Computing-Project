@@ -2,6 +2,7 @@ import numpy as np
 from numpy.linalg import norm
 import cmath
 import matplotlib.pyplot as plt
+
 try:
     from src.sparse_matrix import SparseMatrix
 except:
@@ -93,8 +94,8 @@ class QuantumRegister(SparseMatrix):
             result.normalize()
             return result
         else:
-            raise TypeError('Multiplication not defined between quantum\
-                            register and {}.'.format(type(other)))
+            raise TypeError('Multiplication not defined between quantum' +
+                        ' register and {}.'.format(type(other)))
 
     def plotRegister(self):
         x_ = []
@@ -106,6 +107,9 @@ class QuantumRegister(SparseMatrix):
         xpos_ = np.arange(len(x_))
         plt.bar(xpos_, y_)
         plt.xticks(xpos_, x_)
+        plt.xlabel("Qubit states")
+        plt.ylabel("Amplitude")
+        plt.title("Current quantum register state")
         plt.show()
 
     def split(self, n_a, n_b):
@@ -158,3 +162,15 @@ class QuantumRegister(SparseMatrix):
         a = QuantumRegister(n_a,a_states_)
         b = QuantumRegister(n_b,b_states_)
         return(a,b)
+
+
+def main():
+    example = QuantumRegister(n_qubits=4)
+    example.setState([0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1])
+    example = example
+    print(example)
+    example.plotRegister()
+    print(example.measure())
+
+if __name__ == '__main__':
+    main()
