@@ -64,12 +64,10 @@ class Grover:
 
     def init_register(self):
         """
-        ########################################################################
+        Initialises the register in to the super position state by applying a
+        Hadamard gate which acts on n_qubits to the quantum register.
         """
         h = H(self.n_qubits)
-        x = X(self.n_qubits)
-        h2 = H(self.n_qubits)
-        empty_register = QuantumRegister(self.n_qubits)
         self.qr = h * self.qr
         return self.qr
 
