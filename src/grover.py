@@ -102,7 +102,7 @@ class Grover:
             or selection == 'multiples-of'):
             self.oracle = GeneralOracle(self.target_number, 1, self.n_qubits)
         elif (selection == '2' or selection == 'powers'
-            or selection == 'powers-of'):
+            or selection == 'exponents-of'):
             self.oracle = GeneralOracle(self.target_number, 2, self.n_qubits)
         else:
             print("Problem selection not valid. Try either: multiples-of." +
