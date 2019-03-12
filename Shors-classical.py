@@ -50,8 +50,7 @@ def post_classical(y, Q, m, N): #classical post-processing (after the quantum pa
     d.append(1 + a[0]*a[1]) #d1 = 1 + a0*a1
     for i in range(2, len(a)):
         d.append(a[i]*d[i-1]+d[i-2])
-        print("d")
-        print(d)
+
     #find all possible candidates for period r
     period = []
     period.append(1)
