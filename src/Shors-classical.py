@@ -128,4 +128,5 @@ def test_post_processing():
     r = post_classical(y, Q, m, N)
     print(r)
 
-test_post_processing()
+if __name__ == '__main__':
+    test_post_processing()
