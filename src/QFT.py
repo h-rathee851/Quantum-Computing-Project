@@ -1,8 +1,4 @@
-
-# coding: utf-8
-
-# In[1]:
-
+# Imports
 import numpy as np
 from numpy.linalg import norm
 import cmath
@@ -22,11 +18,12 @@ except:
 
 
     
-    
+#Defining a method that returns matrix form of Quantum Fourier Transform acting on n qubits    
 def QFT(n_qubits):
-    
+    # arg n_qubits : number of qubits QFT acts on
     n = n_qubits
     
+    # Start by applying Hadamard to the first qubit and them iterate to apply the phase gates
     QFT = H(1) % I(n - 1)
     
     for j in range(1,n):
@@ -56,45 +53,17 @@ def QFT(n_qubits):
             
             QFT = c_r * QFT
             
-    
+    # Apply Hadamard on the last qubit
     QFT = (I(n-1) % H(1)) * QFT
-
-#     QFT = QFT.getHermTranspose()
     
     return QFT
     
    
-    
+#Defining a method that returns matrix form of inverse Quantum Fourier Transform acting on n qubits        
 def invQFT(n_qubits):
-    
+    # Return the Hermitian Transpose(Inverse) of QFT
     return QFT(n_qubits).getHermTranspose()
-    
- '''   
-
-
-# In[6]:
-
-qft = invQFT(9)
 
 
 
-# In[7]:
-
-print(qft)
-
-
-# In[9]:
-
-I(0)
-
-
-# In[12]:
-
-for i in range(1,4):
-    print(i)
-
-
-# In[ ]:
-
-'''
 
