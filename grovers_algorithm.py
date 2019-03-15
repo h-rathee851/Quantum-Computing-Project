@@ -52,6 +52,8 @@ def main(args):
         sys.stdout.write("Simulation progress: %.0f%%\r"
                                 % ((100 * i / itterations)))
         sys.stdout.flush()  # Prints progress of simulation.
+        p.build_quantum_register()
+        p.init_register()
         result = p.run(n_states)
     p.plot_results()
     p.print_results(itterations)
