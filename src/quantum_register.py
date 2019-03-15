@@ -10,7 +10,6 @@ except:
 
 
 class QuantumRegister(SparseMatrix):
-
     def __init__(self, n_qubits = 1, base_state_ = None):
         self.n_states = 2**n_qubits
         self.n_qubits = n_qubits

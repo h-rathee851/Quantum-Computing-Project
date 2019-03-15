@@ -3,7 +3,7 @@ from numpy.linalg import norm
 import cmath
 import matplotlib.pyplot as plt
 import sys
-# sys.path.append("..")
+
 try:
     from src.sparse_matrix import SparseMatrix
     from src.quantum_register import QuantumRegister

@@ -1,6 +1,6 @@
 #******************************************************************************#
 #                                                                              #
-# Creates Sparse Matricies which derive from the opperator class.               #
+# Creates Sparse Matricies which derive from the opperator class.              #
 # Contains the quantum gates: I, H, X, Y, Z, R_phi, RX, RY, RZ, CZ, CNOT,      #
 # CCNOT, S, T, SWAP, SQUSwap, CSWAP, ISWAP and PSWAP.                          #
 #                                                                              #
