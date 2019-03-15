@@ -87,7 +87,7 @@ def measure_second_reg(N,m,t_qubits,second_reg_vals_):
             
     QR1.setState(state_1)
     
-    return QR1,mes_val
+    return QR1
     
     
     
