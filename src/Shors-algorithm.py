@@ -1,0 +1,130 @@
+#Shor's algorithm
+import random
+import math
+import numpy as np
+from numpy.linalg import norm
+import cmath
+import matplotlib.pyplot as plt
+try:
+    from src.sparse_matrix import SparseMatrix
+    from src.quantum_register import QuantumRegister
+    from src.quantum_operator import Operator
+    from src.operators import *
+except:
+    from sparse_matrix import SparseMatrix
+    from quantum_register import QuantumRegister
+    from quantum_operator import Operator
+    from operators import *
+
+#N - interger to be factored
+#t _qubits - total number of qubits used in both registers;
+#the greater number of qubits, the higher accuracy of results
+def all_Shor(N, t_qubits):
+    l = 0 #when l == 1, then the while loop is stopped - factors are found;
+    #when l == 2, quantum period-finding is not required
+    while l == 0: #when no non-trivial factor of N is found
+        #classical preprocessing
+        m = random.randint(1, N-1) #pick a random integer m, such that  1 < m < N
+        Q = 2**t_qubits
+        b = math.gcd(m, N) #find the greatest common divisor of m and N
+
+        if b != 1:
+            #b is a nontrivial factor of N
+            l = 2
+            f = N/b
+            print("No need to proceed to phase estimation.")
+            print(str(b) + " and " + str(int(f)) + " are non-trivial factors of " + str(N) + ".")
+
+        else: #if b == 1
+            #Quantum part
+            #do period-finding using phase estimation
+            QR3, second_reg_vals_ = UaGate(N, m, t_qubits)
+
+            QR = measure_second_reg(N, m, t_qubits, second_reg_vals_)
+            n_qubits = t_qubits
+            ft = invQFT(n_qubits) * QR
+            ft.plotRegister()
+
+            mes_ = []
+            for  i in range(0, 500): #create distribution of measurements from inverse QFT
+                mes_ += [ft.measure()]
+
+            counts = np.bincount(mes_)
+
+            y = np.argmax(counts)
+            print("measurement on the first register")
+            print(y)
+
+
+            #classical postprocessing
+            #Estimate y/Q in lower terms using continued fraction expansion. This will yield d/r estimation.
+            #this method is from https://qudev.phys.ethz.ch/content/QSIT15/Shors%20Algorithm.pdf
+            #algorithm for finding continued fraction expansion comes from Nielsen textbook
+
+            if y != 0:
+                #continued fraction expansion
+                a = continued_fraction(y, Q)
+
+                #find all candidates for integer d
+                d = []
+                #print(a)
+                d.append(a[0]) #d0 = a0
+                d.append(1 + a[0]*a[1]) #d1 = 1 + a0*a1
+                for i in range(2, len(a)):
+                    d.append(a[i]*d[i-1]+d[i-2])
+
+                #find all possible candidates for period r
+                period = []
+                period.append(1)
+                period.append(a[1])
+                for i in range(2, len(a)):
+                    period.append(a[i]*period[i-1]+period[i-2])
+
+                #finding more suitable r candidates
+                canditate_no = []
+                for i in range(1, len(period)):
+                    #r and d have to be co-prime
+                    div = period[i]/d[i]
+                    if math.gcd(period[i], d[i]) == 1 and div != 0 and div != 1:
+                        canditate_no.append(period[i])
+
+                if canditate_no: #if the list of r candidates is not empty
+                    #testing r candidates
+                    for k in range(len(canditate_no)):
+                        r = canditate_no[k]
+                        if r % 2 == 0 and (m**(r/2)) % N != -1: #good candidate
+                            l = 1 #stop the big while loop
+                            print("yay")
+                            print(r)
+                            break
+
+            else: #the measurement y is 0
+                r = Q
+                l = 1
+    if l == 1: #final stage: finding non-trivial factors
+
+        mod = (m**(r/2) % N) + 1
+        gcd = math.gcd(int(mod), N)
+
+        if gcd == 1 or gcd == N:
+            mod = (m**(r/2) % N) - 1
+            gcd = math.gcd(int(mod), N)
+        f = int(N/gcd)
+        print(str(gcd) + " and " + str(f) + " are non-trivial factors of " + str(N) + ".")
+
+
+"""
+testing components of Shor's algorithm:
+"""
+#test continued fraction expansion
+def test_cont_frac():
+    y = 427 #measurement from the first register
+    Q = 512 #number of superposition states
+    a = continued_fraction(y, Q)
+    print(a)
+
+#test all Shor's algorithm
+if __name__ == '__main__':
+    N = 15 #integer to be factored
+    t_qubits = 9 #total number of qubits used in the quantum part
+    all_Shor(N, t_qubits)
