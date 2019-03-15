@@ -38,8 +38,8 @@ class QuantumRegister(SparseMatrix):
 
     def measure(self, doPrint=False):
         """
-        Colllapses the quantum wavefunction in to a possible state.
-        :param: (bool) doPrint, True is the measurment of the system is to be
+        Collapses the quantum wavefunction in to a possible state.
+        :param: (bool) doPrint, True if the measurement of the system is to be
                 printed; False otherwise.
         """
         probabilities_ = np.zeros(self.n_states)
