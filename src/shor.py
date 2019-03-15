@@ -1,11 +1,11 @@
 #******************************************************************************#
 #                                                                              #
-#                         Source code for Shor's                               #
+#                         Source code for Quantum part of Shor's               #
 #                          factoring algorithm.                                #
 #                                                                              #
 #******************************************************************************#
 
-
+# Import 
 import numpy as np
 from numpy.linalg import norm
 import cmath
@@ -22,11 +22,15 @@ except:
     from operators import *
     
     
-    
+# Defining a method that returns the state of the register after passing through the black box    
 def UaGate(N,m,t_qubits):
+    # args: N: Number to be factored
+    #       m: base of the function (random number between 1 and N-1)
+    #       t_qubits: Number of qubits in first register. Determines the probability
+    #                 with which we get the right answer.
     
-    l_qubits = round(math.sqrt(N))
-    
+    # Determine l_qubits, qubits in the second register as the number of qubits required to store N 
+    l_qubits = math.ceil(math.log(N,2))
     tot_qubits = t_qubits+l_qubits
     
     QR3 = QuantumRegister(tot_qubits)
