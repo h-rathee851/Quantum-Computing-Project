@@ -26,6 +26,23 @@ except:
     from QFT import *
     from quantum_shor import *
 
+def continued_fraction(y, Q): #continued fraction expansion for a rational fraction
+    a = []
+    integer, remainder1 = divmod(y, Q)
+    a.append(integer)
+    integer, remainder2 = divmod(Q, remainder1)
+    a.append(integer)
+
+    while True:
+        integer, remainder3 = divmod(remainder1, remainder2)
+        if remainder3 == 0:
+            break
+        a.append(integer)
+        remainder1 = remainder2
+        remainder2 = remainder3
+
+    return a    
+
 #N - interger to be factored
 #t _qubits - total number of qubits used in both registers;
 #the greater number of qubits, the higher accuracy of results
