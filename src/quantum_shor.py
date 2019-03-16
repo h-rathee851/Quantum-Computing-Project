@@ -65,8 +65,6 @@ def UaGate(N,m,t_qubits):
 
     second_reg_vals_ = np.unique(second_reg_vals_)
 
-    print(second_reg_vals_)
-
     QR3.normalize()
 
     return QR3,second_reg_vals_
