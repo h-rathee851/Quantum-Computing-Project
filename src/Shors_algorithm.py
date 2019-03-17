@@ -41,7 +41,7 @@ def continued_fraction(y, Q): #continued fraction expansion for a rational fract
         remainder1 = remainder2
         remainder2 = remainder3
 
-    return a    
+    return a
 
 #N - interger to be factored
 #t _qubits - total number of qubits used in both registers;
@@ -109,7 +109,6 @@ def all_Shor(N, t_qubits):
                         r = canditate_no[k]
                         if r % 2 == 0 and (m**(r/2)) % N != -1: #good candidate
                             l = 1 #stop the big while loop
-                            print("yay")
                             print(r)
                             break
             else: #the measurement y is 0
