@@ -1,6 +1,6 @@
 #******************************************************************************#
 #                                                                              #
-#                         Source code for Quantum part of Shor's               #
+#                  Source code for Quantum part of Shor's                      #
 #                          factoring algorithm.                                #
 #                                                                              #
 #******************************************************************************#
@@ -34,57 +34,33 @@ def UaGate(N,m,t_qubits):
     # Determine l_qubits, qubits in the second register as the number of qubits required to store N
     l_qubits = math.ceil(math.log(N,2))
     tot_qubits = t_qubits+l_qubits
-
     QR3 = QuantumRegister(tot_qubits)
-
     QR3.setState([0]*(2**tot_qubits))
-
     second_reg_vals_  = []
-
     for i in range(2**t_qubits):
-
         res = int(np.mod(m**i, N))
-
         QR1 = QuantumRegister(t_qubits)
         QR2 = QuantumRegister(l_qubits)
-
         state_1 = np.zeros(2**t_qubits)
         state_2 = np.zeros(2**l_qubits)
-
         state_1[i] = 1
         state_2[res] = 1
-
         QR1.setState(state_1)
         QR2.setState(state_2)
-
         QR3 = QR3 + (QR1*QR2)
-
         second_reg_vals_ += [res]
-
     second_reg_vals_ = np.array(second_reg_vals_)
-
     second_reg_vals_ = np.unique(second_reg_vals_)
-
     QR3.normalize()
-
     return QR3,second_reg_vals_
 
 def measure_second_reg(N,m,t_qubits,second_reg_vals_):
-
     mes_val = random.choice(second_reg_vals_)
-
     QR1 = QuantumRegister(t_qubits)
-
     state_1 = np.zeros(2**t_qubits)
-
     for i in range(2**t_qubits):
-
         res = int(np.mod(m**i, N))
-
         if res == mes_val:
-
             state_1[i] = 1
-
     QR1.setState(state_1)
-
     return QR1
