@@ -79,28 +79,35 @@ def all_Shor(N, t_qubits):
             #Estimate y/Q in lower terms using continued fraction expansion. This will yield d/r estimation.
             #r is the period
 
-            if y != 0:
-                #continued fraction expansion
-                a = continued_fraction(y, Q)
-                #find all candidates for integer d
-                d = []
-                d.append(a[0]) #d0 = a0
-                d.append(1 + a[0]*a[1]) #d1 = 1 + a0*a1
-                for i in range(2, len(a)):
-                    d.append(a[i]*d[i-1]+d[i-2])
-                #find all possible candidates for period r
-                period = []
-                period.append(1)
-                period.append(a[1])
-                for i in range(2, len(a)):
-                    period.append(a[i]*period[i-1]+period[i-2])
-                #finding more suitable r candidates
-                canditate_no = []
-                for i in range(1, len(period)):
-                    #r and d have to be co-prime
-                    div = period[i]/d[i]
-                    if math.gcd(period[i], d[i]) == 1 and div != 0 and div != 1:
-                        canditate_no.append(period[i])
+            if y != 0: #if the measurement from the first register is not 0
+               try:
+                    a = continued_fraction(y, Q)
+
+                    #find all candidates for integer d
+                    d = []
+                    #print(a)
+                    d.append(a[0]) #d0 = a0
+                    d.append(1 + a[0]*a[1]) #d1 = 1 + a0*a1
+                    for i in range(2, len(a)):
+                        d.append(a[i]*d[i-1]+d[i-2])
+
+                    #find all possible candidates for period r
+                    period = []
+                    period.append(1)
+                    period.append(a[1])
+                    for i in range(2, len(a)):
+                        period.append(a[i]*period[i-1]+period[i-2])
+
+                    #finding more suitable r candidates
+                    canditate_no = []
+                    for i in range(1, len(period)):
+                        #r and d have to be co-prime
+                        div = period[i]/d[i]
+                        if math.gcd(period[i], d[i]) == 1 and div != 0 and div != 1:
+                            canditate_no.append(period[i])
+                except:
+                    print("Continued fraction expansion cannot be calculated.")
+                    
                 if canditate_no: #if the list of r candidates is not empty
                     #testing r candidates
                     for k in range(len(canditate_no)):
@@ -110,7 +117,8 @@ def all_Shor(N, t_qubits):
                             break
             else: #the measurement y is 0
                 r = Q
-                l = 1
+                l = 1 #move to the final stage of finding non-trivial factors
+                
     if l == 1: #final stage: finding non-trivial factors
         mod = (m**(r/2) % N) + 1
         gcd = math.gcd(int(mod), N)
