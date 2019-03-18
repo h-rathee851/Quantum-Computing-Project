@@ -77,15 +77,13 @@ def all_Shor(N, t_qubits):
             print(y)
             #classical postprocessing
             #Estimate y/Q in lower terms using continued fraction expansion. This will yield d/r estimation.
-            #this method is from https://qudev.phys.ethz.ch/content/QSIT15/Shors%20Algorithm.pdf
-            #algorithm for finding continued fraction expansion comes from Nielsen textbook
+            #r is the period
 
             if y != 0:
                 #continued fraction expansion
                 a = continued_fraction(y, Q)
                 #find all candidates for integer d
                 d = []
-                #print(a)
                 d.append(a[0]) #d0 = a0
                 d.append(1 + a[0]*a[1]) #d1 = 1 + a0*a1
                 for i in range(2, len(a)):
@@ -109,8 +107,6 @@ def all_Shor(N, t_qubits):
                         r = canditate_no[k]
                         if r % 2 == 0 and (m**(r/2)) % N != -1: #good candidate
                             l = 1 #stop the big while loop
-                            print("yay")
-                            print(r)
                             break
             else: #the measurement y is 0
                 r = Q
