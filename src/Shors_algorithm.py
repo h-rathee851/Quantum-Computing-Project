@@ -26,7 +26,11 @@ except:
     from QFT import *
     from quantum_shor import *
 
-def continued_fraction(y, Q): #continued fraction expansion for a rational fraction
+def continued_fraction(y, Q): 
+    """
+    Calculates continued fraction expansion for a rational fraction.
+    The output is a classical notation for continued fraction [a0, a1, a2, a3, ..., an].
+    """
     a = []
     integer, remainder1 = divmod(y, Q)
     a.append(integer)
@@ -43,10 +47,15 @@ def continued_fraction(y, Q): #continued fraction expansion for a rational fract
 
     return a    
 
-#N - interger to be factored
-#t _qubits - total number of qubits used in both registers;
-#the greater number of qubits, the higher accuracy of results
+
 def all_Shor(N, t_qubits):
+    """
+    Main function to carry the full simulation of Shor's algorithm.
+        :param: (int) N: Integer to be factored.
+        :param: (int) t_qubits: Total number of qubits used in both registers -
+                        the greater number of qubits, the higher accuracy of results.
+    
+    """
     l = 0 #when l == 1, then the while loop is stopped - factors are found;
     #when l == 2, quantum period-finding is not required
     while l == 0: #when no non-trivial factor of N is found
