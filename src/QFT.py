@@ -18,9 +18,13 @@ except:
 
 
 
-#Defining a method that returns matrix form of Quantum Fourier Transform acting on n qubits
+
 def QFT(n_qubits):
-    # arg n_qubits : number of qubits QFT acts on
+    """
+        Returns matrix form of Quantum Fourier Transform acting on n qubits
+        
+        :param: (int) n_qubits: Number of qubits QFT acts on
+    """
     n = n_qubits
     # Start by applying Hadamard to the first qubit and them iterate to apply the phase gates
     QFT = H(1) % I(n - 1)
@@ -43,7 +47,12 @@ def QFT(n_qubits):
     return QFT
 
 
-#Defining a method that returns matrix form of inverse Quantum Fourier Transform acting on n qubits
+
 def invQFT(n_qubits):
+    """
+    returns matrix form of inverse Quantum Fourier Transform acting on n qubits
+   
+    :param: (int) n_qubits: Number of qubits QFT acts on
+    """
     # Return the Hermitian Transpose(Inverse) of QFT
     return QFT(n_qubits).getHermTranspose()
