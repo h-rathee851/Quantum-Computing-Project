@@ -107,7 +107,7 @@ class Grover:
         else:
             print("Problem selection not valid. Try either: multiples-of." +
             "Where selection is '1' or 'multiples' or 'multiples-of'. Or;" +
-            "powers-of. Where selection is '2' or 'powers' or 'powers-of'.")
+            "powers-of. Where selection is '2' or 'exponents' or 'exponents-of'.")
             sys.exit()
         return self.oracle
 
