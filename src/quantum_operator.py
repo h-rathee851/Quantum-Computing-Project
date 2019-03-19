@@ -10,7 +10,20 @@ except:
     from quantum_register import QuantumRegister
 
 class Operator(SparseMatrix):
+    
+    """
+    Operator class inherits from SparceMatrix
+    """
     def __init__(self, n_qubits : int=1, base = np.zeros((2,2))):
+        
+        """
+        Class constructor
+        
+        Inputs: 
+               n_qubits <int>: Number of qubits the oparator acts on
+               base <np.array>: Matrix representation for the operators
+        """
+        
         if n_qubits <= 0 :
             raise ValueError('Operator must operate on at least 1 qubit!')
         self.n_qubits = n_qubits

@@ -26,13 +26,13 @@ from src.grover_phase import *
 def main(args):
     if len(args) > 4 or len(args) < 3:
         print("Add the number of qubits and target state.")
-        print("python grovers_algorithm.py n_qubits [1:multiples-of or" +
-            "2:exponents-of] target-number optional(number of target states)")
+        print("python grovers_algorithm.py n_qubits [1:'multiples-of' or" +
+            "2:'exponents-of'] target-number optional(number of target states)")
         sys.exit()
     elif len(args) == 4 and type(int(args[3])) != np.int:
         print("Add the number of qubits and target state.")
-        print("python grovers_algorithm.py n_qubits [1:multiples-of or" +
-            "2:exponents-of] target-number optional(number of target states)")
+        print("python grovers_algorithm.py n_qubits [1:'multiples-of or'" +
+            "'2:exponents-of'] target-number optional(number of target states)")
         sys.exit()
 
     n_qubits = int(args[0])
@@ -47,12 +47,12 @@ def main(args):
     p.init_register()
     p.init_reflection_matrix()
     p.gen_oracle(test)
-    itterations = 100
+    itterations = 1000
     for i in range(itterations):
         sys.stdout.write("Simulation progress: %.0f%%\r"
                                 % ((100 * i / itterations)))
         sys.stdout.flush()  # Prints progress of simulation.
-        p.build_quantum_register()
+        p.build_quantum_register() # Reset Quantum Register to run Grovers on it again.
         p.init_register()
         result = p.run(n_states)
     p.plot_results()

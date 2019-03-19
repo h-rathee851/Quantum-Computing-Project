@@ -26,7 +26,11 @@ except:
     from QFT import *
     from quantum_shor import *
 
-def continued_fraction(y, Q): #continued fraction expansion for a rational fraction
+def continued_fraction(y, Q):
+    """
+    Calculates continued fraction expansion for a rational fraction.
+    The output is a classical notation for continued fraction [a0, a1, a2, a3, ..., an].
+    """
     a = []
     integer, remainder1 = divmod(y, Q)
     a.append(integer)
@@ -43,17 +47,23 @@ def continued_fraction(y, Q): #continued fraction expansion for a rational fract
 
     return a
 
-#N - interger to be factored
-#t _qubits - total number of qubits used in both registers;
-#the greater number of qubits, the higher accuracy of results
+
 def all_Shor(N, t_qubits):
+    """
+    Main function to carry the full simulation of Shor's algorithm.
+        :param: (int) N: Integer to be factored.
+        :param: (int) t_qubits: number of qubits used in each register -
+                        the greater number of qubits, the higher accuracy of results.
+
+    """
     l = 0 #when l == 1, then the while loop is stopped - factors are found;
     #when l == 2, quantum period-finding is not required
     while l == 0: #when no non-trivial factor of N is found
         #classical preprocessing
         m = random.randint(1, N-1) #pick a random integer m, such that  1 < m < N
-        Q = 2**t_qubits
+        Q = 2**t_qubits #number of superposition states, it holds for inequality N^2 =< Q < 2N^2
         b = math.gcd(m, N) #find the greatest common divisor of m and N
+
         if b != 1:
             #b is a nontrivial factor of N
             l = 2
@@ -65,55 +75,65 @@ def all_Shor(N, t_qubits):
             #do period-finding using phase estimation
             QR3, second_reg_vals_ = UaGate(N, m, t_qubits)
             QR = measure_second_reg(N, m, t_qubits, second_reg_vals_)
-            n_qubits = t_qubits
-            ft = invQFT(n_qubits) * QR
+
+            ft = invQFT(t_qubits) * QR #apply inverse quantum Fourier transform
+            #show a plot of possibilities for each qubit state to be measured
             ft.plotRegister()
-            mes_ = []
-            for  i in range(0, 500): #create distribution of measurements from inverse QFT
-                mes_ += [ft.measure()]
-            counts = np.bincount(mes_)
-            y = np.argmax(counts)
+
             print("measurement on the first register")
+            y = ft.measure()
             print(y)
+
             #classical postprocessing
             #Estimate y/Q in lower terms using continued fraction expansion. This will yield d/r estimation.
-            #this method is from https://qudev.phys.ethz.ch/content/QSIT15/Shors%20Algorithm.pdf
-            #algorithm for finding continued fraction expansion comes from Nielsen textbook
+            #r is the period
 
-            if y != 0:
-                #continued fraction expansion
-                a = continued_fraction(y, Q)
-                #find all candidates for integer d
-                d = []
-                #print(a)
-                d.append(a[0]) #d0 = a0
-                d.append(1 + a[0]*a[1]) #d1 = 1 + a0*a1
-                for i in range(2, len(a)):
-                    d.append(a[i]*d[i-1]+d[i-2])
-                #find all possible candidates for period r
-                period = []
-                period.append(1)
-                period.append(a[1])
-                for i in range(2, len(a)):
-                    period.append(a[i]*period[i-1]+period[i-2])
-                #finding more suitable r candidates
-                canditate_no = []
-                for i in range(1, len(period)):
-                    #r and d have to be co-prime
-                    div = period[i]/d[i]
-                    if math.gcd(period[i], d[i]) == 1 and div != 0 and div != 1:
-                        canditate_no.append(period[i])
-                if canditate_no: #if the list of r candidates is not empty
+            if y != 0: #if the measurement from the first register is not 0
+                try:
+                    a = continued_fraction(y, Q)
+
+                    #find all candidates for integer d
+                    d = []
+                    #print(a)
+                    d.append(a[0]) #d0 = a0
+                    d.append(1 + a[0]*a[1]) #d1 = 1 + a0*a1
+                    for i in range(2, len(a)):
+                        d.append(a[i]*d[i-1]+d[i-2])
+
+                    #find all possible candidates for period r
+                    period = []
+                    period.append(1)
+                    period.append(a[1])
+                    for i in range(2, len(a)):
+                        period.append(a[i]*period[i-1]+period[i-2])
+
+                    #finding more suitable r candidates
+                    canditate_no = []
+                    for i in range(1, len(period)):
+                        #r and d have to be co-prime
+                        div = period[i]/d[i]
+                        if math.gcd(period[i], d[i]) == 1 and div != 0 and div != 1:
+                            canditate_no.append(period[i])
+
+                    if canditate_no: #if the list of r candidates is not empty
                     #testing r candidates
-                    for k in range(len(canditate_no)):
-                        r = canditate_no[k]
-                        if r % 2 == 0 and (m**(r/2)) % N != -1: #good candidate
-                            l = 1 #stop the big while loop
-                            print(r)
-                            break
+                        for k in range(len(canditate_no)):
+                            r = canditate_no[k]
+                            if r % 2 == 0 and (m**(r/2)) % N != -1: #good candidate
+                                l = 1 #stop the big while loop
+                                break
+                    else: #if no r candidates were found
+                        l = 0
+                        print("No suitable r candidates were found. The algorithm is rerun.")
+
+                except:
+                    print("Continued fraction expansion cannot be calculated.")
+                    l = 0
+
             else: #the measurement y is 0
-                r = Q
-                l = 1
+                l = 0
+                print("The measurement y is 0. The algorithm is rerun.")
+
     if l == 1: #final stage: finding non-trivial factors
         mod = (m**(r/2) % N) + 1
         gcd = math.gcd(int(mod), N)
