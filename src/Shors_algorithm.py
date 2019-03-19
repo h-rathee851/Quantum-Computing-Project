@@ -61,7 +61,7 @@ def all_Shor(N, t_qubits):
     while l == 0: #when no non-trivial factor of N is found
         #classical preprocessing
         m = random.randint(1, N-1) #pick a random integer m, such that  1 < m < N
-        Q = 2**t_qubits
+        Q = 2**t_qubits #number of superposition states, it holds for inequality N^2 =< Q < 2N^2
         b = math.gcd(m, N) #find the greatest common divisor of m and N
         if b != 1:
             #b is a nontrivial factor of N
