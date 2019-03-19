@@ -52,8 +52,20 @@ def main(args):
         sys.stdout.write("Simulation progress: %.0f%%\r"
                                 % ((100 * i / itterations)))
         sys.stdout.flush()  # Prints progress of simulation.
-        p.build_quantum_register() # Reset Quantum Register to run Grovers on it again.
-        p.init_register()
+
+        # The following two lines reset the Quantum Register. This will give a
+        # much higher accuracy ~95% of a correct result being selected over all
+        # of the runs.
+        # Removing these two lines will operate on the same register producing
+        # the expected 50% accuracy presented in Grover's origenal paper.
+
+        ########################################################################
+        # Run on one register or on many new registers.                        #
+        ########################################################################
+        # p.build_quantum_register() # Reset Quantum Register to run Grovers on it again.
+        # p.init_register()
+        ########################################################################
+
         result = p.run(n_states)
     p.plot_results()
     p.print_results(itterations)
