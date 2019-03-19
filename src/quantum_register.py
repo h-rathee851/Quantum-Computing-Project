@@ -14,8 +14,7 @@ class QuantumRegister(SparseMatrix):
      """
     Quantum register class. The quantum register is saved as a complex
     sparce matrix. Each element of the matix is the amplitude of the
-    corresponding state, eg. the first element is the first state, the second
-    element is the second state.
+    corresponding state.
     """
 
     def __init__(self, n_qubits = 1, base_state_ = None):
