@@ -157,6 +157,6 @@ def test_cont_frac():
 
 #test all Shor's algorithm
 if __name__ == '__main__':
-    N = 8 #integer to be factored
-    t_qubits = 4 #total number of qubits used in the quantum part
+    N = 15 #integer to be factored
+    t_qubits = 9 #number of qubits used in each register in the quantum part
     all_Shor(N, t_qubits)
