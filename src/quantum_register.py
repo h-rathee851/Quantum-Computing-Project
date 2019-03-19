@@ -43,7 +43,7 @@ class QuantumRegister(SparseMatrix):
     def setState(self, state_):
         
         """
-        Set the state of theh quantum register\
+        Set the state of the quantum register
         
         Inputs:
                 state_: <np.array> state of the register
@@ -63,12 +63,17 @@ class QuantumRegister(SparseMatrix):
         :param: (bool) doPrint, True if the measurement of the system is to be
                 printed; False otherwise.
         """
+        
+        # Calculate probabilities
         probabilities_ = np.zeros(self.n_states)
         for i in range(self.n_states):
             if (i,0) in self.matrix:
                 probabilities_[i] = abs(self.matrix[(i, 0)])**2
             else:
                 probabilities_[i] = 0
+                
+                
+         # Choose a state according to the probabilites
         state =  int (np.random.choice(self.n_states, p=probabilities_))
         if doPrint:
             print("The measured state is: |"
@@ -120,7 +125,7 @@ class QuantumRegister(SparseMatrix):
 
     def plotRegister(self):
         
-         """
+        """
         Produce bar graph of quantum register.
         """
         x_ = []
