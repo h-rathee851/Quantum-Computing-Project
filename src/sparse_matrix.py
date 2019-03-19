@@ -5,8 +5,18 @@ import matplotlib.pyplot as plt
 import copy
 
 class SparseMatrix:
-    # rows and columns give the dimensions of the matrix
+   
     def __init__(self, rows, columns):
+        
+        """
+        Class Constructor : -
+        
+        Inputs:
+                rows : number of rows for the matrix
+                columns : number of columns for the matrix
+        """
+        
+        # rows and columns give the dimensions of the matrix
         self.rows = rows
         self.columns = columns
         self.matrix = {}
@@ -41,6 +51,10 @@ class SparseMatrix:
             return 0
 
     def getHermTranspose(self):
+        
+        """
+        Calculate and output hermitian transpose(inverse) of the matrix
+        """
         result = copy.deepcopy(self)
         for (i,j) in self.matrix:
             result.setElement(j,i,np.conj(self.getElement(i,j)))
@@ -61,14 +75,21 @@ class SparseMatrix:
 
     # Define inner product
     def innerProduct(self, other):
+        
+        """
+        Perform inner product on self with other
+        
+        Inputs
+            Other : <SparceMatrix> Matrix on the Right Hand Side
+        """
         result = SparseMatrix(self.rows, other.columns)
-        if self.columns == other.rows:
-            for (i, j) in self.matrix:
+        if self.columns == other.rows: # Check dimentions
+            for (i, j) in self.matrix: # Iterate through matrix elements
                 for (k, l) in other.matrix:
                     if (j == k):
                         val = result.getElement(i, l)
                         result.setElement(i, l, val + (self.matrix[(i, j)]
-                                                        * other.matrix[(k, l)]))
+                                                        * other.matrix[(k, l)])) #Set the element of the result matrix
         else:
             raise ValueError('Incompatible Dimentions.')
         return result
@@ -76,18 +97,34 @@ class SparseMatrix:
     #Define outer product
     #Other on the right
     def outerProduct(self, other):
+        
+        """
+        Perform outer(Tensor) product on self with other
+        
+        Inputs
+            Other : <SparceMatrix> Matrix on the Right Hand Side
+        """
+        
         result = SparseMatrix(self.rows*other.rows, self.columns*other.columns)
-        for (i, j) in self.matrix:
+        for (i, j) in self.matrix:  # Iterate through matrix elements
             for (k, l) in other.matrix:
                 result.setElement( ((i * other.rows) + k), ((j * other.columns) + l),
-                                    self.matrix[(i, j)] * other.matrix[(k, l)] )
+                                    self.matrix[(i, j)] * other.matrix[(k, l)] ) #Set the element of the result matrix
         return result
 
-    @staticmethod
-    def add(m1,m2):
-        return
+#     @staticmethod
+#     def add(m1,m2):
+#         return
 
     def __add__(self, other):
+        
+        """
+        Perform addition on self with other
+        
+        Inputs
+            Other : <SparceMatrix> Matrix on the Right Hand Side
+        """
+        
         result = copy.deepcopy(self)
         if self.columns == other.columns and self.rows == other.rows:
             for element in other.matrix:
@@ -95,10 +132,20 @@ class SparseMatrix:
                     self.getElement(element[0], element[1])
                     + other.getElement(element[0], element[1]))
         else:
+            
             raise ValueError('Incompatible Dimentions.')
+            
         return result
 
     def __sub__(self, other):
+        
+        """
+        Perform subtraction on self with other
+        
+        Inputs
+            Other : <SparceMatrix> Matrix on the Right Hand Side
+        """
+        
         result = copy.deepcopy(self)
         if self.columns == other.columns and self.rows == other.rows:
             for element in other.matrix:
@@ -109,6 +156,9 @@ class SparseMatrix:
             raise ValueError('Incompatible Dimentions.')
         return result
 
+""" 
+Class test methods
+"""
 def test():
     sm = SparseMatrix(2, 2)
     sm.setElement(0, 1, 1)
