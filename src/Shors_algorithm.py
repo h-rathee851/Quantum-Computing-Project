@@ -53,7 +53,7 @@ def all_Shor(N, t_qubits):
     Main function to carry the full simulation of Shor's algorithm.
         :param: (int) N: Integer to be factored.
         :param: (int) t_qubits: number of qubits used in each register -
-                        the greater number of qubits, the higher accuracy of results.
+                the greater number of qubits, the higher accuracy of results.
 
     """
     l = 0 #when l == 1, then the while loop is stopped - factors are found;
