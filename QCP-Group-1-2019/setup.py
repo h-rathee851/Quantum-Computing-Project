@@ -3,6 +3,9 @@
 
 from setuptools import setup
 
+with open("README.md", 'r') as f:
+    long_description = f.read()
+
 setup(name='Quantum Computer Simulation',
     version='1',
     description='Simulation of a Quantum Network using TensorNetwork Methods',
