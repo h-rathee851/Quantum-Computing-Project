@@ -52,7 +52,7 @@ def all_Shor(N, t_qubits):
     """
     Main function to carry the full simulation of Shor's algorithm.
         :param: (int) N: Integer to be factored.
-        :param: (int) t_qubits: Total number of qubits used in both registers -
+        :param: (int) t_qubits: number of qubits used in each register -
                         the greater number of qubits, the higher accuracy of results.
     
     """
@@ -74,8 +74,9 @@ def all_Shor(N, t_qubits):
             #do period-finding using phase estimation
             QR3, second_reg_vals_ = UaGate(N, m, t_qubits)
             QR = measure_second_reg(N, m, t_qubits, second_reg_vals_)
-            n_qubits = t_qubits
-            ft = invQFT(n_qubits) * QR
+        
+            ft = invQFT(t_qubits) * QR #apply inverse quantum Fourier transform
+            #show a plot of possibilities for each qubit state to be measured
             ft.plotRegister()
             mes_ = []
             for  i in range(0, 500): #create distribution of measurements from inverse QFT
@@ -84,6 +85,7 @@ def all_Shor(N, t_qubits):
             y = np.argmax(counts)
             print("measurement on the first register")
             print(y)
+            
             #classical postprocessing
             #Estimate y/Q in lower terms using continued fraction expansion. This will yield d/r estimation.
             #r is the period
