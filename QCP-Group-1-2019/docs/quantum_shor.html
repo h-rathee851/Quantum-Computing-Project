@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module quantum_shor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>quantum_shor</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Ciainm%5Conedrive%5Cuni%202018-19%5Cquantum%20computing%20project%5Cquantum-computing-project%5Cqcp-group-1-2019%5Csrc%5Cquantum_shor.py">c:\users\iainm\onedrive\uni 2018-19\quantum computing project\quantum-computing-project\qcp-group-1-2019\src\quantum_shor.py</a></font></td></tr></table>
+    <p><tt>#******************************************************************************#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source&nbsp;code&nbsp;for&nbsp;Quantum&nbsp;part&nbsp;of&nbsp;Shor's&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;factoring&nbsp;algorithm.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#<br>
+#******************************************************************************#</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="cmath.html">cmath</a><br>
+<a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+<a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-UaGate"><strong>UaGate</strong></a>(N, m, t_qubits)</dt><dd><tt>returns&nbsp;the&nbsp;state&nbsp;of&nbsp;the&nbsp;registers&nbsp;after&nbsp;passing&nbsp;through&nbsp;the&nbsp;black&nbsp;box&nbsp;that&nbsp;performs&nbsp;U|x&gt;|y&gt;&nbsp;=&nbsp;|x&gt;&nbsp;|xy&nbsp;Mod(N)&gt;<br>
+&nbsp;<br>
+&nbsp;:param:&nbsp;(int)&nbsp;N:&nbsp;Number&nbsp;to&nbsp;be&nbsp;factored<br>
+&nbsp;:param:&nbsp;(int)&nbsp;m:&nbsp;base&nbsp;of&nbsp;the&nbsp;function&nbsp;(random&nbsp;number&nbsp;between&nbsp;1&nbsp;and&nbsp;N-1)<br>
+&nbsp;:param:&nbsp;(int)&nbsp;t_qubits:&nbsp;Number&nbsp;of&nbsp;qubits&nbsp;in&nbsp;first&nbsp;register.&nbsp;Determines&nbsp;the&nbsp;probability<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;which&nbsp;we&nbsp;get&nbsp;the&nbsp;right&nbsp;answer.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;returns&nbsp;:&nbsp;<br>
+&nbsp;<br>
+&nbsp;(QuantumRegister)&nbsp;QR3&nbsp;:&nbsp;State&nbsp;of&nbsp;quantum&nbsp;registers&nbsp;after&nbsp;passing&nbsp;through&nbsp;the&nbsp;back&nbsp;box<br>
+&nbsp;(int&nbsp;list)&nbsp;second_reg_vals_:&nbsp;list&nbsp;of&nbsp;unique&nbsp;values&nbsp;in&nbsp;the&nbsp;second&nbsp;register</tt></dd></dl>
+ <dl><dt><a name="-measure_second_reg"><strong>measure_second_reg</strong></a>(N, m, t_qubits, second_reg_vals_)</dt><dd><tt>Using&nbsp;the&nbsp;principle&nbsp;of&nbsp;implicit&nbsp;measuremnet,&nbsp;measure&nbsp;the&nbsp;sesond&nbsp;register&nbsp;and&nbsp;return&nbsp;a&nbsp;quantum&nbsp;register&nbsp;consisting&nbsp;<br>
+of&nbsp;values&nbsp;of&nbsp;first&nbsp;register&nbsp;correspondong&nbsp;to&nbsp;the&nbsp;measured&nbsp;value&nbsp;of&nbsp;the&nbsp;second&nbsp;register<br>
+&nbsp;<br>
+&nbsp;:param:&nbsp;(int)&nbsp;N:&nbsp;Number&nbsp;to&nbsp;be&nbsp;factored<br>
+&nbsp;:param:&nbsp;(int)&nbsp;m:&nbsp;base&nbsp;of&nbsp;the&nbsp;function&nbsp;(random&nbsp;number&nbsp;between&nbsp;1&nbsp;and&nbsp;N-1)<br>
+&nbsp;:param:&nbsp;(int)&nbsp;t_qubits:&nbsp;Number&nbsp;of&nbsp;qubits&nbsp;in&nbsp;first&nbsp;register.&nbsp;Determines&nbsp;the&nbsp;probability<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;which&nbsp;we&nbsp;get&nbsp;the&nbsp;right&nbsp;answer.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;:param:&nbsp;(int&nbsp;list)&nbsp;second_reg_vals_:&nbsp;list&nbsp;of&nbsp;unique&nbsp;values&nbsp;in&nbsp;the&nbsp;second&nbsp;register.&nbsp;Output&nbsp;from&nbsp;UaGate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;returns&nbsp;:&nbsp;<br>
+&nbsp;<br>
+&nbsp;(QuantumRegister)&nbsp;QR&nbsp;:&nbsp;State&nbsp;of&nbsp;first&nbsp;quantum&nbsp;register&nbsp;after&nbsp;measuring&nbsp;the&nbsp;second&nbsp;register</tt></dd></dl>
+</td></tr></table>
+</body></html>
