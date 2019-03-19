@@ -311,8 +311,7 @@ class CUGate(Operator):
                 # Return indexes of elements equal to 1
                 indices_of_ones = np.flatnonzero(bin_i)
                 # Check if control qubits are set to 1
-                control_qubit_check = np.isin(control_qubit_indices,
-                                                indices_of_ones)
+                control_qubit_check = np.isin(control_qubit_indices, indices_of_ones)
                 if np.all(control_qubit_check):
                     # If true then then put base matrix onto diagonal
                     for i in range(base.size):
