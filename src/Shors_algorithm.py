@@ -63,6 +63,7 @@ def all_Shor(N, t_qubits):
         m = random.randint(1, N-1) #pick a random integer m, such that  1 < m < N
         Q = 2**t_qubits #number of superposition states, it holds for inequality N^2 =< Q < 2N^2
         b = math.gcd(m, N) #find the greatest common divisor of m and N
+        
         if b != 1:
             #b is a nontrivial factor of N
             l = 2
@@ -78,12 +79,9 @@ def all_Shor(N, t_qubits):
             ft = invQFT(t_qubits) * QR #apply inverse quantum Fourier transform
             #show a plot of possibilities for each qubit state to be measured
             ft.plotRegister()
-            mes_ = []
-            for  i in range(0, 500): #create distribution of measurements from inverse QFT
-                mes_ += [ft.measure()]
-            counts = np.bincount(mes_)
-            y = np.argmax(counts)
+            
             print("measurement on the first register")
+            y = ft.measure()
             print(y)
             
             #classical postprocessing
@@ -116,19 +114,25 @@ def all_Shor(N, t_qubits):
                         div = period[i]/d[i]
                         if math.gcd(period[i], d[i]) == 1 and div != 0 and div != 1:
                             canditate_no.append(period[i])
-                except:
-                    print("Continued fraction expansion cannot be calculated.")
-                    
-                if canditate_no: #if the list of r candidates is not empty
+                            
+                    if canditate_no: #if the list of r candidates is not empty
                     #testing r candidates
                     for k in range(len(canditate_no)):
                         r = canditate_no[k]
                         if r % 2 == 0 and (m**(r/2)) % N != -1: #good candidate
                             l = 1 #stop the big while loop
                             break
+                    else: #if no r candidates were found
+                        l = 0
+                        print("No suitable r candidates were found. The algorithm is rerun.")
+                        
+                except:
+                    print("Continued fraction expansion cannot be calculated.")
+                    l = 0
+                       
             else: #the measurement y is 0
-                r = Q
-                l = 1 #move to the final stage of finding non-trivial factors
+                l = 0
+                print("The measurement y is 0. The algorithm is rerun.")
                 
     if l == 1: #final stage: finding non-trivial factors
         mod = (m**(r/2) % N) + 1
