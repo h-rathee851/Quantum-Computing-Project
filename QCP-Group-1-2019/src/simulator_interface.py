@@ -1,6 +1,6 @@
 import abc
 
-class ISparseMatrix(abc.ABC):
+class SparseMatrix(abc.ABC):
     @abc.abstractmethod
     def setElement(self, i, j, m):
         """
@@ -30,8 +30,8 @@ class ISparseMatrix(abc.ABC):
         pass
 
 
-@SMatrix.register
-class IRegister(SparseMatrix):
+@SparseMatrix.register
+class Register(SparseMatrix):
     @abc.abstractmethod
     def setState(self, state_):
         """
@@ -77,8 +77,8 @@ class IRegister(SparseMatrix):
         pass
 
 
-@SMatrix.register
-class IOperator(SparseMatrix):
+@SparseMatrix.register
+class Operator(SparseMatrix):
     @abc.abstractmethod
     def __mul__(self, rhs):
         """
