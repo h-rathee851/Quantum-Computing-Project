@@ -136,21 +136,21 @@ def all_Shor(N, t_qubits):
                 repeat = 1 #quantum measurement might be repeated
                 print("The measurement y is 0. The algorithm is rerun.")
 
-    if l == 1: #final stage: finding non-trivial factors
+        if l == 1: #final stage: finding non-trivial factors
 
-        mod = (m**(r/2) % N) + 1
-        gcd = math.gcd(int(mod), N)
-
-        if gcd == 1 or gcd == N:
-            mod = (m**(r/2) % N) - 1
+            mod = (m**(r/2) % N) + 1
             gcd = math.gcd(int(mod), N)
-            
-        if gcd == 1 or gcd == N:
-            l = 0
-            print("Trivial factors are found. The algorithm is rerun.")
-        else:
-            f = int(N/gcd)
-            print(str(gcd) + " and " + str(f) + " are non-trivial factors of " + str(N) + ".")
+
+            if gcd == 1 or gcd == N:
+                mod = (m**(r/2) % N) - 1
+                gcd = math.gcd(int(mod), N)
+
+            if gcd == 1 or gcd == N:
+                l = 0
+                print("Trivial factors are found. The algorithm is rerun.")
+            else:
+                f = int(N/gcd)
+                print(str(gcd) + " and " + str(f) + " are non-trivial factors of " + str(N) + ".")
 
 
 """
