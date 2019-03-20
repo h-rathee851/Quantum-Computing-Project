@@ -127,13 +127,13 @@ def all_Shor(N, t_qubits):
 
                 else: #if no r candidates were found
                     l = 0
-                    repeat = 1 #quantum measurement might be potentially repeated
+                    repeat = 1 #quantum measurement might be repeated
                     print("No suitable r candidates were found. The algorithm is rerun.")
 
 
             else: #the measurement y is 0
                 l = 0
-                repeat = 1 #quantum measurement might be potentially repeated
+                repeat = 1 #quantum measurement might be repeated
                 print("The measurement y is 0. The algorithm is rerun.")
 
     if l == 1: #final stage: finding non-trivial factors
