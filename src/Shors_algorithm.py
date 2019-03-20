@@ -144,8 +144,13 @@ def all_Shor(N, t_qubits):
         if gcd == 1 or gcd == N:
             mod = (m**(r/2) % N) - 1
             gcd = math.gcd(int(mod), N)
-        f = int(N/gcd)
-        print(str(gcd) + " and " + str(f) + " are non-trivial factors of " + str(N) + ".")
+            
+        if gcd == 1 or gcd == N:
+            l = 0
+            print("Trivial factors are found. The algorithm is rerun.")
+        else:
+            f = int(N/gcd)
+            print(str(gcd) + " and " + str(f) + " are non-trivial factors of " + str(N) + ".")
 
 
 """
