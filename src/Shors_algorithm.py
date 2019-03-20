@@ -120,7 +120,7 @@ def all_Shor(N, t_qubits):
                         for k in range(len(canditate_no)):
                             r = canditate_no[k]
                             if r % 2 == 0 and (m**(r/2)) % N != -1: #good candidate
-                                l = 1 #stop the big while loop
+                                l = 1 #stop the big while loop; factors can be found now
                                 break
                     else: #if no r candidates were found
                         l = 0
