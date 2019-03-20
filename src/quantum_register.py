@@ -127,11 +127,10 @@ class QuantumRegister(SparseMatrix):
         x_ = []
         y_ = []
         for i in range(self.n_states):
-            if (i, 0) in self.matrix:
-                x_.append("|" + np.binary_repr(i, self.n_qubits) + ">")
-                y_.append(abs(self.matrix[(i, 0)]))
-        xpos_ = np.arange(len(x_))
-        plt.bar(xpos_, y_)
+            y_.append(abs(self.getElement(i,0)))
+            
+         
+        plt.bar(np.arange(self.n_states), y_)
         plt.xlabel("Qubit states")
         plt.ylabel("Amplitude")
         plt.title("Current quantum register state")
