@@ -28,7 +28,7 @@ except:
 
 def continued_fraction(y, Q):
     """
-    Calculates continued fraction expansion for a rational fraction.
+    Calculates continued fraction expansion for a rational fraction. It uses the Euclidean algorithm.
     The output is a classical notation for continued fraction [a0, a1, a2, a3, ..., an].
     """
     a = []
@@ -36,16 +36,19 @@ def continued_fraction(y, Q):
     a.append(integer)
     integer, remainder2 = divmod(Q, remainder1)
     a.append(integer)
-
-    while True:
-        integer, remainder3 = divmod(remainder1, remainder2)
-        if remainder3 == 0:
-            break
-        a.append(integer)
-        remainder1 = remainder2
-        remainder2 = remainder3
+    
+    if remainder2 != 0:
+        while True:
+            integer, remainder3 = divmod(remainder1, remainder2)
+            if remainder3 == 0:
+                a.append(integer)
+                break
+            a.append(integer)
+            remainder1 = remainder2
+            remainder2 = remainder3
 
     return a
+
 
 
 def all_Shor(N, t_qubits):
