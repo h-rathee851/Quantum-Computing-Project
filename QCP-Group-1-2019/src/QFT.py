@@ -45,6 +45,7 @@ def QFT(n_qubits):
             QFT = c_r * QFT
     # Apply Hadamard on the last qubit
     QFT = (I(n-1) % H(1)) * QFT
+    QFT = SWAP(n) * QFT
     return QFT
 
 
